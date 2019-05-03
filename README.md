@@ -13,14 +13,21 @@
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/project_structure.png)
 
  base:存放全局使用的一些数据
+ 
 localization:国际化模块
+
  model:网络json模型
+ 
 net:网络模块
+
 page:页面
   often_ui_example:ui例子页面
+  
  scoped_model:状态管理模块
 utils:工具模块
+
 widget:自定义和自己封装的一些widget
+
  main:程序主入口
 
 **项目中遇到的一些坑和经验:**
@@ -30,7 +37,8 @@ widget:自定义和自己封装的一些widget
 
 
 2.因为flutter是树形结构，context上下文使用不当很容易就出现某个控件不显示或者报错，比如下图有三个两个context，这里最好把第二个context改个名，不然很容易就使用错误
-![在这里插入图片描述]https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/erro_two.png)
+
+![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/erro_two.png)
 
 
 3.还是context，树形结构下的代码默认会使用当前的context，但是有的需求要用到父控件的context,这时可以声明一个全局的Globalkey，在scaffold中通过key来绑定，其他地方可以使用这个key
