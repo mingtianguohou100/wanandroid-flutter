@@ -26,12 +26,13 @@ widget:自定义和自己封装的一些widget
 **项目中遇到的一些坑和经验:**
 
 1.android端启动会有短暂的白屏，解决办法是在项目的android文件夹中找到如下路径，替换图中标识的图片或颜色值（默认是白色）
-
-
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/erro_one.png)
-2.因为flutter是树形结构，context上下文使用不当很容易就出现某个控件不显示或者报错，比如下图有三个两个context，这里最好把第二个context改个名，不然很容易就使用错误
 
+
+2.因为flutter是树形结构，context上下文使用不当很容易就出现某个控件不显示或者报错，比如下图有三个两个context，这里最好把第二个context改个名，不然很容易就使用错误
 ![在这里插入图片描述]https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/erro_two.png)
+
+
 3.还是context，树形结构下的代码默认会使用当前的context，但是有的需求要用到父控件的context,这时可以声明一个全局的Globalkey，在scaffold中通过key来绑定，其他地方可以使用这个key
 
 ```
@@ -78,6 +79,7 @@ widget:自定义和自己封装的一些widget
 
 
 2.flutter属于前端框架，个人感觉它的很多机制和思想一半属于前端一半属于原生移动端，某些东西在我一个做android原生开发的看来着实不好理解，比如状态管理机制，之前也参考了很多github上大佬们的项目，有用redux、bloc等，最后还是选用了scoped_model（感觉离移动端稍近，更好理解），不仅可以状态管理，还可以做到mvp的效果,数据逻辑和视图分离，我感觉最重要的就是flutter里面视图和逻辑代码是在一起的，天生的mvvm（android是Activity里面写代码，xml里面布局）原因。**
+
 
 
 
