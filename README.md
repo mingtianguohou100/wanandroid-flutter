@@ -1,7 +1,16 @@
-完整的flutter项目，数据接口来自于开源Api-wanandroid，感谢鸿洋大佬！
+完整的flutter项目，项目大致包含
+1.视频引导页
+2.登录注册、退出登录
+3.国际化
+4.主题更换
+5.widget和基本功能使用示例
+数据接口来自于开源Api-wanandroid
+
+功能和界面很简单，主要为了体验flutter完整项目开发流程和感受，以及一些主流框架的使用，方便以后不断尝试替换最新框架和主流类库，莫天高楼平地起，一个大型项目有一个完善稳定的框架基础非常重要
+
 
 ## **项目结构**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019050322240916.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21pbmd0aWFuZ3VvaG91MTAw,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/project_structure.png)
 
  base:存放全局使用的一些数据
 localization:国际化模块
@@ -18,10 +27,10 @@ widget:自定义和自己封装的一些widget
 1.android端启动会有短暂的白屏，解决办法是在项目的android文件夹中找到如下路径，替换图中标识的图片或颜色值（默认是白色）
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190503232137638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21pbmd0aWFuZ3VvaG91MTAw,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/erro_one.png)
 2.因为flutter是树形结构，context上下文使用不当很容易就出现某个控件不显示或者报错，比如下图有三个两个context，这里最好把第二个context改个名，不然很容易就使用错误
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190503232636829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21pbmd0aWFuZ3VvaG91MTAw,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述]https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/erro_two.png)
 3.还是context，树形结构下的代码默认会使用当前的context，但是有的需求要用到父控件的context,这时可以声明一个全局的Globalkey，在scaffold中通过key来绑定，其他地方可以使用这个key
 
 ```
@@ -71,8 +80,7 @@ widget:自定义和自己封装的一些widget
 csdn博客：[https://blog.csdn.net/mingtianguohou100)
 
 
-**
+
 
 ## 这个开源项目会持续更新，界面功能很简单，就是因为后期可以替换和使用一些主流的框架和架构，大家觉得有用多来点start吧，感谢!
 
-**
