@@ -6,8 +6,9 @@
 5.widget和基本功能使用示例
 数据接口来自于开源Api-wanandroid
 
-功能和界面很简单，主要为了体验flutter完整项目开发流程和感受，以及一些主流框架的使用，方便以后不断尝试替换最新框架和主流类库，莫天高楼平地起，一个大型项目有一个完善稳定的框架基础非常重要
+功能和界面很简单，主要为了体验flutter完整项目开发流程和感受，以及一些主流框架的使用，方便以后不断尝试替换最新框架和主流类库，摩天大楼平地起，一个大型项目有一个完善稳定的框架基础非常重要
 
+学习交流群：252512949
 
 ## **项目结构**
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/project_structure.png)
