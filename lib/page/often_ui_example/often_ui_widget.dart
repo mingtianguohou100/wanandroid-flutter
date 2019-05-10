@@ -5,6 +5,7 @@ import 'package:wanandroid_flutter/page/often_ui_example/progress_widget.dart';
 import 'package:wanandroid_flutter/page/often_ui_example/route_widget.dart';
 import 'package:wanandroid_flutter/page/often_ui_example/select_widget.dart';
 
+import 'animation_example.dart';
 import 'dialog_widget.dart';
 import 'input_widget.dart';
 import 'layout_widget.dart';
@@ -72,6 +73,13 @@ class _OftenUiWidgetState extends State<OftenUiWidget> {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (BuildContext bc) {
               return RouteWidget();
+            }));
+          }),
+          //动画
+          createItem(WanAndroidLocalizations.of(context).animation_example, () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (BuildContext bc) {
+              return AnimationExample();
             }));
           }),
         ],

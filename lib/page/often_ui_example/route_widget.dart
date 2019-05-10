@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter/localization/wan_android_localizations.dart';
 import 'package:wanandroid_flutter/page/often_ui_example/route_test_page.dart';
+import 'package:wanandroid_flutter/widget/custom_route.dart';
 
 class RouteWidget extends StatefulWidget {
   @override
@@ -52,21 +53,13 @@ class _RouteWidgetState extends State<RouteWidget> {
             ),
             RaisedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return RouteTestPage();
-                }));
+                Navigator.of(context).push(CustomRoute(RouteTestPage(),roteTag:RouteTag.scale));
               },
               child: Text("动态跳转"),
             ),
             RaisedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return RouteTestPage(
-                    data: "111111",
-                  );
-                })).then((v) {
+                Navigator.of(context).push(CustomRoute(RouteTestPage(data:"111111"),roteTag:RouteTag.slide)).then((v){
                   if (v != null) {
                     SnackBar sb = SnackBar(content: Text(v));
                     _globalKey.currentState.showSnackBar(sb);

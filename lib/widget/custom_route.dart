@@ -1,16 +1,20 @@
-/**
- * 通过自定义transitionsBuilder实现路由过渡动画
- *
- * 请切换不同注释分别查看
- */
 import 'package:flutter/material.dart';
 
-class CustomRoute extends PageRouteBuilder {
-  final Widget _widget;
-  int _pageTage = 0;
+enum RouteTag {
+  ratation,
+  scale,
+  fade,
+  slide,
+}
 
-  CustomRoute(this._pageTage, this._widget)
-      : super(
+//自定义的路由转场动画
+class CustomRoute extends PageRouteBuilder {
+  Widget _widget;
+
+  CustomRoute(
+    this._widget, {
+    RouteTag roteTag = RouteTag.ratation,
+  }) : super(
           transitionDuration: const Duration(seconds: 2),
           pageBuilder: (BuildContext context, Animation<double> animation,
               Animation<double> secondaryAnimation) {
@@ -20,9 +24,9 @@ class CustomRoute extends PageRouteBuilder {
               Animation<double> animation,
               Animation<double> secondaryAnimation,
               Widget child) {
-            switch (_pageTage) {
-              case 0:
-//            旋转+比例转换路由
+            switch (roteTag) {
+              case RouteTag.ratation:
+                //旋转
                 return RotationTransition(
                   turns: Tween(begin: -1.0, end: 1.0).animate(CurvedAnimation(
                       parent: animation, curve: Curves.fastOutSlowIn)),
@@ -33,15 +37,15 @@ class CustomRoute extends PageRouteBuilder {
                   ),
                 );
                 break;
-              case 1:
-//              比例转换路由
+              case RouteTag.scale:
+                //比例转换路由
                 return ScaleTransition(
                   scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
                       parent: animation, curve: Curves.fastOutSlowIn)),
                   child: child,
                 );
                 break;
-              case 2:
+              case RouteTag.fade:
                 //淡出过渡路由
                 return FadeTransition(
                   opacity: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -49,7 +53,7 @@ class CustomRoute extends PageRouteBuilder {
                   child: child,
                 );
                 break;
-              case 3:
+              case RouteTag.slide:
                 //幻灯片路由
                 return SlideTransition(
                   position: Tween<Offset>(
