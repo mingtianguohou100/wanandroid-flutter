@@ -6,25 +6,37 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wanandroid_flutter/base/global_bloc_state.dart';
 import 'package:wanandroid_flutter/model/UserLocation.dart';
 import 'package:wanandroid_flutter/net/api.dart';
+import 'package:wanandroid_flutter/net/request_base_bean.dart';
 import 'package:wanandroid_flutter/utils/sp_utils.dart';
 import 'package:wanandroid_flutter/widget/network_loading_widget.dart';
 
+import 'interceptors/error_interceptors.dart';
+import 'interceptors/log_interceptors.dart';
+import 'interceptors/token_interceptors.dart';
+import 'new_base_bean.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+typedef void onSuccess(data);
+typedef void onError(error);
+typedef void onFinish();
+
 class HttpManager {
-  static const String GET_TYPE = "get";
-  static const String POST_TYPE = "post";
   static HttpManager _instance;
 
-  static HttpManager get instance => _getInstance();
+  static HttpManager get instance => HttpManager._internal();
 
-  HttpManager._internal() {}
+  factory HttpManager() => _instance;
 
-  factory HttpManager() => _getInstance();
+  Dio _dio;
 
-  static HttpManager _getInstance() {
-    if (_instance == null) {
-      _instance = HttpManager._internal();
-    }
-    return _instance;
+  HttpManager._internal() {
+    _dio = Dio();
+    _dio.options.connectTimeout = 5000;
+    _dio.options.receiveTimeout = 3000;
+
+    _dio.interceptors.add(ErrorInterceptors(_dio));
+    _dio.interceptors.add(LogInterceptors());
+//    _dio.interceptors.add(TokenInterceptors());
   }
 
   void requestGet(String url, Function onSuccess,
@@ -33,8 +45,7 @@ class HttpManager {
       dynamic headers,
       bool isLogin,
       BuildContext context}) async {
-
-    _requestData(url, GET_TYPE, onSuccess,
+    _requestData(url, Api.GET_TYPE, onSuccess,
         onErro: onErro,
         params: params,
         headers: headers,
@@ -48,13 +59,74 @@ class HttpManager {
       dynamic headers,
       bool isLogin,
       BuildContext context}) async {
-
-    _requestData(url, POST_TYPE, onSuccess,
+    _requestData(url, Api.POST_TYPE, onSuccess,
         onErro: onErro,
         params: params,
         headers: headers,
         isLogin: isLogin,
         context: context);
+  }
+
+  requestNet<T>(String url,
+      {Map<String, dynamic> queryParameters,
+      method = Api.GET_TYPE,
+      ProgressCallback onSendProgress,
+      ProgressCallback onReceiveProgress,
+      onSuccess,
+      onError,
+      onFinish}) async {
+    _dio.options.method = method;
+
+
+    Response response;
+    try {
+        response= await _dio.request(
+        Api.BASE_URL + url,
+        queryParameters: queryParameters,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+
+      if (response != null && response.data != null) {
+        int errorCode = response.data["errorCode"];
+        String errorMsg = response.data["errorMsg"];
+        var data = response.data;
+        if (errorCode == Api.SUCCESS_CODE) {
+          if (onSuccess != null) {
+            try{
+              onSuccess(data);
+            }on DioError catch (e){
+              onError();
+              Fluttertoast.showToast(msg: "Json错啦");
+            }
+          }
+        } else {
+          if (onError != null) {
+            if (errorCode != null) {
+              onError(errorMsg);
+              Fluttertoast.showToast(msg: errorMsg);
+            } else {
+              onError();
+            }
+          }
+        }
+      } else {
+        onError();
+        Fluttertoast.showToast(msg: "连接失败");
+      }
+    } on DioError catch (e) {
+      if (e.message != null) {
+        Fluttertoast.showToast(msg: e.message);
+      }
+      Fluttertoast.showToast(msg:"数据异常");
+      onError();
+    }
+
+    if (onFinish != null) {
+      onFinish();
+    }
+
+
   }
 
   void _requestData(String url, String method, Function onSuccess,
@@ -63,9 +135,7 @@ class HttpManager {
       dynamic headers,
       bool isLogin,
       BuildContext context}) async {
-
     Options option = Options(
-        baseUrl: Api.BASE_URL,
         method: method,
         connectTimeout: 5000,
         receiveTimeout: 3000); //链接超时5秒，接收超时3秒
@@ -82,9 +152,10 @@ class HttpManager {
 
     try {
       if (params != null && params.isNotEmpty) {
-        response = await Dio().request(url, data: params, options: option);
+        response = await Dio()
+            .request(Api.BASE_URL + url, data: params, options: option);
       } else {
-        response = await Dio().request(url, options: option);
+        response = await Dio().request(Api.BASE_URL + url, options: option);
       }
     } catch (e) {
       onErro("网络错误，亲!" + e.toString());
@@ -116,24 +187,5 @@ class HttpManager {
     } catch (e) {
       onErro("网络错误!" + e.toString());
     }
-
-  }
-
-  void createInterceptor(Dio dio) {
-    dio.interceptor.request.onSend = (Options options) {
-      // 在请求被发送之前做一些事情
-      print("createInterceptor:" + options.method);
-    };
-
-    dio.interceptor.response.onSuccess = (Response response) {
-      // 在返回响应数据之前做一些预处理
-      return response; // continue
-    };
-
-    dio.interceptor.response.onError = (DioError e) {
-      // 当请求失败时做一些预处理
-      print("createInterceptor:" + e.message);
-      return e; //continue
-    };
   }
 }

@@ -44,7 +44,9 @@ class _DialogWidgetState extends State<DialogWidget> {
               createAlDialog(context);
             },
           ),
-        ],
+
+    Card(child:Padding(padding: EdgeInsets.all(10.0),child: Text("asdasd"),),elevation: 50.0,borderOnForeground:false,clipBehavior:Clip.none)
+    ],
       ),
     );
   }

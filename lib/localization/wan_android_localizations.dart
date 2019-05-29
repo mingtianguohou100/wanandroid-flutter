@@ -52,6 +52,7 @@ class WanAndroidLocalizations {
       'click_load_more': 'ClickMore',
       'layout_example': 'layout_widget',
       'route_widget': 'route',
+      'animation_example': 'animation',
     },
     'zh': {
       'home': '玩Android',
@@ -96,8 +97,13 @@ class WanAndroidLocalizations {
       'click_load_more': '点击加载更多',
       'layout_example': '布局控件',
       'route_widget': '路由',
+      'animation_example': '动画',
     }
   };
+
+  get animation_example{
+    return _localizedValues[locale.languageCode]['animation_example'];
+  }
 
   get layout_example{
     return _localizedValues[locale.languageCode]['layout_example'];
@@ -310,4 +316,7 @@ class WanAndroidLocalizations {
   static WanAndroidLocalizations of(BuildContext context) {
     return Localizations.of(context, WanAndroidLocalizations);
   }
+
+
+
 }

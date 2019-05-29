@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
 
     _textEditingController_count = TextEditingController();
     _textEditingController_password = TextEditingController();
+
   }
 
   @override
@@ -101,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             isLogin
                 ? regiestCheckLogin()
                 : Navigator.of(context)
-                    .push(CustomRoute(0, Register()))
+                    .push(CustomRoute(Register(),roteTag:RouteTag.scale))
                     .then((data) {
                     data != null
                         ? _global.currentState.showSnackBar(
