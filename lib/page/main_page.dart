@@ -6,6 +6,7 @@ import 'package:wanandroid_flutter/page/home_page.dart';
 import 'package:wanandroid_flutter/page/ks_page.dart';
 import 'package:wanandroid_flutter/page/login_page.dart';
 import 'package:wanandroid_flutter/scoped_model/mian_scoped_model.dart';
+import 'package:wanandroid_flutter/widget/login_animation.dart';
 import 'package:wanandroid_flutter/widget/search_bar_delegate.dart';
 import 'package:wanandroid_flutter/widget/wanandroid_drawer_widget.dart';
 
@@ -19,7 +20,6 @@ class _MainPageState extends State<MainPage> {
   List<Widget> _page;
   GlobalKey<ScaffoldState> _global;
   searchBarDelegate _searchBarDelegate; //搜索的界面
-
   @override
   void initState() {
     // TODO: implement initState

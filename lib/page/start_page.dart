@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:wanandroid_flutter/net/common_service.dart';
 import 'package:wanandroid_flutter/page/main_page.dart';
 import 'package:wanandroid_flutter/widget/network_loading_widget.dart';
 
@@ -33,6 +34,8 @@ class _StartPageState extends State<StartPage>
         VideoPlayerController.asset('resources/video/guide_two.mp4');
     _videoPlayerController_thread =
         VideoPlayerController.asset('resources/video/guide_thread.mp4');
+
+
 
     _pageVideo = List();
     _pageVideo.add(_videoPlayerController);

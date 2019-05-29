@@ -316,4 +316,7 @@ class WanAndroidLocalizations {
   static WanAndroidLocalizations of(BuildContext context) {
     return Localizations.of(context, WanAndroidLocalizations);
   }
+
+
+
 }

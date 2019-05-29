@@ -22,8 +22,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  #网络https://github.com/flutterchina/dio/blob/flutter/README-ZH.md
-  dio: ^1.0.9
+ #网络:https://github.com/flutterchina/dio/blob/flutter/README-ZH.md
+  dio: ^2.1.0
   #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-
   json_annotation: ^2.0.0
   rxdart: ^0.19.0
@@ -35,6 +35,10 @@ dependencies:
   #https://pub.dartlang.org/packages/flutter_webview_plugin#-installing-tab-
   flutter_webview_plugin: ^0.3.0+2
   scoped_model: ^1.0.1
+  #网络状态监听:https://pub.dev/packages/connectivity#-installing-tab-
+  connectivity: ^0.4.3+1
+  #toast:https://github.com/PonnamKarthik/FlutterToast
+  fluttertoast: ^3.1.0
 
 dev_dependencies:
   #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-

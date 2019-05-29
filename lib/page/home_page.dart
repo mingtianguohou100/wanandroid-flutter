@@ -1,17 +1,17 @@
 import 'dart:ui';
 import 'dart:ui' as ui;
 
-import 'package:banner/banner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:wanandroid_flutter/localization/wan_android_localizations.dart';
 import 'package:wanandroid_flutter/model/HomeBannerBean.dart';
 import 'package:wanandroid_flutter/model/HomeWzListBean.dart';
+import 'package:wanandroid_flutter/net/common_service.dart';
 import 'package:wanandroid_flutter/scoped_model/home_scoped_model.dart';
 import 'package:wanandroid_flutter/widget/my_web_page.dart';
 import 'package:wanandroid_flutter/widget/network_loading_widget.dart';
-
+import 'package:banner/banner.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     _homeScopedModel = HomeScopedModel();
     _scrollController = ScrollController();
     _homeScopedModel.requestRefreshData();
+
   }
 
   @override
@@ -89,7 +90,7 @@ class _HomePageState extends State<HomePage> {
       HomeBannerItemModel items, List<HomeBannerItemModel> homeBanner) {
     return Card(
       elevation: 5.0,
-      child: new BannerView(
+      child:  BannerView(
         onBannerClickListener: (index,data){
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (BuildContext context) {

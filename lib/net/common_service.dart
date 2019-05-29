@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:wanandroid_flutter/model/Bean.dart';
 import 'package:wanandroid_flutter/model/HomeBannerBean.dart';
 import 'package:wanandroid_flutter/model/HomeWzListBean.dart';
+import 'package:wanandroid_flutter/model/NewBanner.dart';
 import 'package:wanandroid_flutter/model/UserLocation.dart';
 import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'package:wanandroid_flutter/net/api.dart';
@@ -43,6 +44,29 @@ class CommonService {
     });
   }
 
+
+  /*
+  * 首页banner
+  * **/
+  void testData() {
+
+    HttpManager.instance.requestNet("/hsdfsdfotkey/jssdfsdfsdfon",onReceiveProgress:(int count, int total){
+      print("ddwwwwww获取进度:"+count.toString()+","+total.toString());
+    } ,onSendProgress: (int count, int total){
+      print("ddwwwwww请求进度:"+count.toString()+","+total.toString());
+    },onSuccess: (data){
+      NewBanner homeBannerBean = NewBanner.fromJson(data);
+      print("oooopop请求成功");
+    },onError: (e){
+      print("oooopop请求失败${e!=null?e:""}");
+    },onFinish: (){
+      print("oooopop请求完成");
+
+    });
+
+  }
+
+
   /*
   * 首页文章列表
   * **/
@@ -57,6 +81,11 @@ class CommonService {
       onErro(e);
     });
   }
+
+
+
+
+
 
   /*
   * 首页搜索
