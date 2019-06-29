@@ -22,23 +22,53 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
- #网络:https://github.com/flutterchina/dio/blob/flutter/README-ZH.md
+
+  #框架：https://pub.dev/packages/fish_redux#-installing-tab-
+  fish_redux: ^0.2.1
+
+  #国际化：https://pub.dev/packages/flutter_i18n#-installing-tab-
+  flutter_i18n: ^0.6.3
+
+  #网络:https://github.com/flutterchina/dio/blob/flutter/README-ZH.md
   dio: ^2.1.0
+
   #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-
   json_annotation: ^2.0.0
-  rxdart: ^0.19.0
-  #视频
+
+  #网络图片:https://pub.dev/packages/cached_network_image#-installing-tab-
+  cached_network_image: ^0.8.0
+
+  #网络请求动画:https://pub.dev/packages/flutter_spinkit
+  flutter_spinkit: "^3.1.0"
+
+  #视频:https://pub.dev/packages/video_player#-installing-tab-
   video_player: 0.7.2
-  shared_preferences: ^0.4.3
-  #https://pub.dartlang.org/packages/banner
-  banner: ^0.1.3
-  #https://pub.dartlang.org/packages/flutter_webview_plugin#-installing-tab-
+
+  #刷新:https://github.com/xuelongqy/flutter_easyrefresh
+  flutter_easyrefresh: ^1.2.7
+
+  #webview:https://pub.dartlang.org/packages/flutter_webview_plugin#-installing-tab-
   flutter_webview_plugin: ^0.3.0+2
-  scoped_model: ^1.0.1
+
   #网络状态监听:https://pub.dev/packages/connectivity#-installing-tab-
   connectivity: ^0.4.3+1
+
   #toast:https://github.com/PonnamKarthik/FlutterToast
   fluttertoast: ^3.1.0
+
+  #banner:https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md
+  flutter_swiper: ^1.1.6
+
+  #数据库:https://pub.dev/packages/sqflite#-readme-tab-
+  sqflite: ^1.1.0
+
+  #sp:https://pub.dev/packages/shared_preferences#-installing-tab-
+  shared_preferences: ^0.4.3
+
+  #工具类:https://pub.dev/packages/common_utils#-installing-tab-
+  common_utils: ^1.1.1
+
+
 
 dev_dependencies:
   #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-
@@ -70,6 +100,7 @@ flutter:
      - resources/images/huo_true.png
      - resources/images/android.png
      - resources/images/aixing.png
+     - resources/images/defult_bac_img.png
      - resources/images/flutter_logo.png
      - resources/images/no_select_cir.png
      - resources/images/select_cir.png

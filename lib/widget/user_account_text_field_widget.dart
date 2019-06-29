@@ -1,7 +1,7 @@
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/base/global_bloc_state.dart';
-import 'package:wanandroid_flutter/localization/wan_android_localizations.dart';
+import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/utils/common_util.dart';
 
 /*
@@ -43,22 +43,22 @@ class _UserAccountTextFieldWidgetState
         focusNode: _focusNode,
         validator: (v) {
           return widget._isTag
-              ? (v.toString().length > 0 && !CommonUilt.cehckIsChinese(v)
+              ? (v.toString().length > 0
               ? null
-              : WanAndroidLocalizations.of(context).input_content_count)
-              : (v.toString().length > 5 && !CommonUilt.cehckIsChinese(v)
+              : S.of(context).input_content_count)
+              : (v.toString().length > 5
               ? null
-              : WanAndroidLocalizations.of(context).input_content_pwd);
+              : S.of(context).input_content_pwd);
         },
         keyboardType: widget._isTag ? TextInputType.phone : TextInputType.text,
         obscureText: widget._isTag ? false : true,
         decoration: InputDecoration(
             labelText: widget._isTag
-                ? WanAndroidLocalizations.of(context).account
-                :WanAndroidLocalizations.of(context).password,
+                ? S.of(context).account
+                :S.of(context).password,
             hintText: widget._isTag
-                ? WanAndroidLocalizations.of(context).inputAccount
-                : WanAndroidLocalizations.of(context).inputPassWord,
+                ? S.of(context).inputAccount
+                : S.of(context).inputPassWord,
             prefixIcon: _select_focus
                 ? Image.asset(
               "resources/images/huo_true.png",

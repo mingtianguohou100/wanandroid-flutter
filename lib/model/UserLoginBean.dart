@@ -1,19 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wanandroid_flutter/net/request_base_bean.dart';
-
 part 'UserLoginBean.g.dart';
 
 @JsonSerializable()
-class UserLoginBean extends RequestBaseBean<UserBean> {
-  UserLoginBean(UserBean data, int errorCode, String errorMsg)
-      : super(data, errorMsg, errorCode);
+class UserLoginBean extends Object {
 
-  factory UserLoginBean.fromJson(Map<String, dynamic> srcJson) =>
-      _$UserLoginBeanFromJson(srcJson);
-}
+  @JsonKey(name: 'admin')
+  bool admin;
 
-@JsonSerializable()
-class UserBean {
   @JsonKey(name: 'chapterTops')
   List<dynamic> chapterTops;
 
@@ -41,15 +34,17 @@ class UserBean {
   @JsonKey(name: 'username')
   String username;
 
-  UserBean(this.chapterTops, this.collectIds, this.email, this.icon, this.id,
-      this.password, this.token, this.type, this.username);
+  UserLoginBean(this.admin,this.chapterTops,this.collectIds,this.email,this.icon,this.id,this.password,this.token,this.type,this.username,);
 
+  factory UserLoginBean.fromJson(Map<String, dynamic> srcJson) => _$UserLoginBeanFromJson(srcJson);
 
-  factory UserBean.fromJson(Map<String, dynamic> srcJson) =>
-      _$UserBeanFromJson(srcJson);
+  Map<String, dynamic> toJson() => _$UserLoginBeanToJson(this);
 
   @override
   String toString() {
-    return 'UserBean{chapterTops: $chapterTops, collectIds: $collectIds, email: $email, icon: $icon, id: $id, password: $password, token: $token, type: $type, username: $username}';
+    return 'UserLoginBean{admin: $admin, chapterTops: $chapterTops, collectIds: $collectIds, email: $email, icon: $icon, id: $id, password: $password, token: $token, type: $type, username: $username}';
   }
+
 }
+
+

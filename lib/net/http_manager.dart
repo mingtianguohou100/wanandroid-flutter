@@ -1,24 +1,13 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wanandroid_flutter/base/global_bloc_state.dart';
-import 'package:wanandroid_flutter/model/UserLocation.dart';
+import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'package:wanandroid_flutter/net/api.dart';
-import 'package:wanandroid_flutter/net/request_base_bean.dart';
+import 'package:wanandroid_flutter/utils/common_util.dart';
 import 'package:wanandroid_flutter/utils/sp_utils.dart';
-import 'package:wanandroid_flutter/widget/network_loading_widget.dart';
 
+import 'interceptors/cache_interceptors.dart';
 import 'interceptors/error_interceptors.dart';
 import 'interceptors/log_interceptors.dart';
-import 'interceptors/token_interceptors.dart';
-import 'new_base_bean.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
-typedef void onSuccess(data);
-typedef void onError(error);
-typedef void onFinish();
 
 class HttpManager {
   static HttpManager _instance;
@@ -31,161 +20,48 @@ class HttpManager {
 
   HttpManager._internal() {
     _dio = Dio();
-    _dio.options.connectTimeout = 5000;
-    _dio.options.receiveTimeout = 3000;
+    _dio.options.connectTimeout = Api.CONNECT_TIMEOUT;
+    _dio.options.receiveTimeout = Api.RECEIVE_TIMEOUT;
 
     _dio.interceptors.add(ErrorInterceptors(_dio));
     _dio.interceptors.add(LogInterceptors());
+    _dio.interceptors.add(CachceInterceptors());
 //    _dio.interceptors.add(TokenInterceptors());
   }
 
-  void requestGet(String url, Function onSuccess,
-      {Function onErro,
-      dynamic params,
-      dynamic headers,
-      bool isLogin,
-      BuildContext context}) async {
-    _requestData(url, Api.GET_TYPE, onSuccess,
-        onErro: onErro,
-        params: params,
-        headers: headers,
-        isLogin: isLogin,
-        context: context);
-  }
-
-  void requestPost(String url, Function onSuccess,
-      {Function onErro,
-      dynamic params,
-      dynamic headers,
-      bool isLogin,
-      BuildContext context}) async {
-    _requestData(url, Api.POST_TYPE, onSuccess,
-        onErro: onErro,
-        params: params,
-        headers: headers,
-        isLogin: isLogin,
-        context: context);
-  }
-
-  requestNet<T>(String url,
-      {Map<String, dynamic> queryParameters,
-      method = Api.GET_TYPE,
-      ProgressCallback onSendProgress,
-      ProgressCallback onReceiveProgress,
-      onSuccess,
-      onError,
-      onFinish}) async {
+  Future requestNetWork(
+    String url, {
+    Map<String, dynamic> queryParameters,
+    method = Api.GET_TYPE,
+  }) async {
     _dio.options.method = method;
 
+    UserLoginBean _userLoginBean = await SpUtils.getUserInfo();
 
-    Response response;
+    if (_userLoginBean != null && _userLoginBean.token != null) {
+      _dio.options.headers = {"token": _userLoginBean.token.toString()};
+    }
+
+    Response response = null;
     try {
-        response= await _dio.request(
-        Api.BASE_URL + url,
-        queryParameters: queryParameters,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-      );
+      response = await _dio.request(Api.BASE_URL + url,
+          queryParameters: queryParameters);
 
-      if (response != null && response.data != null) {
+      if (response != null) {
         int errorCode = response.data["errorCode"];
         String errorMsg = response.data["errorMsg"];
-        var data = response.data;
         if (errorCode == Api.SUCCESS_CODE) {
-          if (onSuccess != null) {
-            try{
-              onSuccess(data);
-            }on DioError catch (e){
-              onError();
-              Fluttertoast.showToast(msg: "Json错啦");
-            }
-          }
+          return response.data["data"];
         } else {
-          if (onError != null) {
-            if (errorCode != null) {
-              onError(errorMsg);
-              Fluttertoast.showToast(msg: errorMsg);
-            } else {
-              onError();
-            }
-          }
+          errorMsg = errorMsg != null ? errorMsg : "";
+          CommonUilt.shoToast(errorMsg, backgroundColor: Colors.red);
+          return Future.error(errorMsg);
         }
-      } else {
-        onError();
-        Fluttertoast.showToast(msg: "连接失败");
-      }
-    } on DioError catch (e) {
-      if (e.message != null) {
-        Fluttertoast.showToast(msg: e.message);
-      }
-      Fluttertoast.showToast(msg:"数据异常");
-      onError();
-    }
-
-    if (onFinish != null) {
-      onFinish();
-    }
-
-
-  }
-
-  void _requestData(String url, String method, Function onSuccess,
-      {Function onErro,
-      dynamic params,
-      dynamic headers,
-      bool isLogin,
-      BuildContext context}) async {
-    Options option = Options(
-        method: method,
-        connectTimeout: 5000,
-        receiveTimeout: 3000); //链接超时5秒，接收超时3秒
-
-    if (headers != null && headers.isNotEmpty) {
-      option.headers = headers;
-    }
-    Response response;
-
-    UserLocation ul = GlobalBlocState.instance.global_ul;
-    if (ul != null && ul.cookie != null) {
-      option.headers['Cookie'] = ul.cookie;
-    }
-
-    try {
-      if (params != null && params.isNotEmpty) {
-        response = await Dio()
-            .request(Api.BASE_URL + url, data: params, options: option);
-      } else {
-        response = await Dio().request(Api.BASE_URL + url, options: option);
       }
     } catch (e) {
-      onErro("网络错误，亲!" + e.toString());
+      return Future.error(e != null ? e : "");
     }
 
-    try {
-      if (response.statusCode == 200) {
-        int errorCode = response.data["errorCode"];
-        String errorMsg = response.data["errorMsg"];
-        if (errorCode == 0) {
-          if (response.data != null) {
-            print(
-                "wanandroid_toke" + response.headers['set-cookie'].toString());
-            if (url.contains(Api.LOGIN_URL)) {
-              onSuccess(
-                  response.data, response.headers['set-cookie'].toString());
-            } else {
-              onSuccess(response.data);
-            }
-          } else {
-            onErro("空数据");
-          }
-        } else {
-          onErro(errorMsg.isNotEmpty ? errorMsg : "服务器错误!");
-        }
-      } else {
-        onErro("网络出问题拉!");
-      }
-    } catch (e) {
-      onErro("网络错误!" + e.toString());
-    }
+    return Future.error(response.statusMessage);
   }
 }

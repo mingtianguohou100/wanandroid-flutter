@@ -1,26 +1,28 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wanandroid_flutter/model/UserLocation.dart';
+import 'package:wanandroid_flutter/global/global_constant.dart';
 import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 
 class SpUtils {
   /**
    * 用户登陆信息
    * **/
-  static void saveUserInfo(String name, String cookie) {
+  static void saveUserInfo(String userLoginBeanJson) {
     SharedPreferences.getInstance().then((prefs) {
-      prefs.setString("wanandroid_user_name", name);
-      prefs.setString("wanandroid_user_cookie", cookie);
+      prefs.setString(GlobalConstant.LOCAL_USER_DATA_KEY, userLoginBeanJson);
     });
   }
 
-  static Future<UserLocation> getUserInfo() async {
-    UserLocation ub;
+  static Future<UserLoginBean> getUserInfo() async {
+    UserLoginBean ub;
     SharedPreferences sp = await SharedPreferences.getInstance();
-    String name = sp.getString("wanandroid_user_name");
-    String cookie = sp.getString("wanandroid_user_cookie");
-    if (name!=null&&cookie!=null) {
-      ub = UserLocation(name, cookie);
-      return ub;
+    String userLoginBeanJson = sp.getString(GlobalConstant.LOCAL_USER_DATA_KEY);
+    if (userLoginBeanJson != null&&userLoginBeanJson!="") {
+      try {
+        ub = UserLoginBean.fromJson(json.decode(userLoginBeanJson));
+      } catch (e) {
+      }
     }
     return ub;
   }
@@ -33,36 +35,30 @@ class SpUtils {
   }
 
   /**
-   * 主题和国际化信息
+   * 主题
    * **/
   static void saveAppThemeData(int themeDataIndex) {
     SharedPreferences.getInstance().then((prefs) {
-      prefs.setInt("wanandroid_theme_data", themeDataIndex);
+      prefs.setInt(GlobalConstant.LOCAL_THEME_KEY, themeDataIndex);
     });
   }
 
   static Future<int> getAppThemeData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    int themeIndex = sp.getInt("wanandroid_theme_data");
-    if (themeIndex != null) {
-      return themeIndex as int;
-    }
-    return 0;
+    return sp.getInt(GlobalConstant.LOCAL_THEME_KEY);
   }
 
-  //true=中文
-  static void saveAppLanguageData(bool lanaguage) {
+  /**
+   * 国际化
+   * **/
+  static void saveAppLanguage(String lanaguage) async {
     SharedPreferences.getInstance().then((prefs) {
-      prefs.setBool("wanandroid_language_data", lanaguage);
+      prefs.setString(GlobalConstant.LOCAL_INTEMATIONALIZATION_KEY, lanaguage);
     });
   }
 
-  static Future<bool> getAppLanguageData() async {
+  static Future<String> getAppLanguagea() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    bool language = sp.getBool("wanandroid_language_data");
-    if (language != null) {
-      return language as bool;
-    }
-    return true;
+    return sp.getString(GlobalConstant.LOCAL_INTEMATIONALIZATION_KEY);
   }
 }

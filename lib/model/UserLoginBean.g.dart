@@ -8,22 +8,7 @@ part of 'UserLoginBean.dart';
 
 UserLoginBean _$UserLoginBeanFromJson(Map<String, dynamic> json) {
   return UserLoginBean(
-      json['data'] == null
-          ? null
-          : UserBean.fromJson(json['data'] as Map<String, dynamic>),
-      json['errorCode'] as int,
-      json['errorMsg'] as String);
-}
-
-Map<String, dynamic> _$UserLoginBeanToJson(UserLoginBean instance) =>
-    <String, dynamic>{
-      'data': instance.data,
-      'errorCode': instance.errorCode,
-      'errorMsg': instance.errorMsg
-    };
-
-UserBean _$UserBeanFromJson(Map<String, dynamic> json) {
-  return UserBean(
+      json['admin'] as bool,
       json['chapterTops'] as List,
       json['collectIds'] as List,
       json['email'] as String,
@@ -35,7 +20,9 @@ UserBean _$UserBeanFromJson(Map<String, dynamic> json) {
       json['username'] as String);
 }
 
-Map<String, dynamic> _$UserBeanToJson(UserBean instance) => <String, dynamic>{
+Map<String, dynamic> _$UserLoginBeanToJson(UserLoginBean instance) =>
+    <String, dynamic>{
+      'admin': instance.admin,
       'chapterTops': instance.chapterTops,
       'collectIds': instance.collectIds,
       'email': instance.email,
