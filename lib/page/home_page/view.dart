@@ -41,6 +41,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
         Future.value(false);
   }
 
+
   return WillPopScope(
     child: Scaffold(
       appBar: AppBar(
@@ -57,6 +58,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
       body: EasyRefresh(
         key: _homeState.easyRefreshKey,
         child: ListView.builder(
+          controller:_homeState.scrollController ,
           itemBuilder: _adapter.itemBuilder,
           itemCount: _adapter.itemCount,
         ),

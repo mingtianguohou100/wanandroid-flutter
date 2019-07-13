@@ -12,9 +12,13 @@ import 'global_fish_redux/store.dart';
 
 ///全局路由
 class AppRoute {
-  static PageRoutes _buildPageRoutes() {
+
+  static PageRoutes _pageRoutes;
+
+  static PageRoutes get pageRoutes {
     if (_pageRoutes == null) {
-      _pageRoutes = PageRoutes(
+      _pageRoutes =
+          _pageRoutes = PageRoutes(
         pages: <String, Page<Object, dynamic>>{
           AppRoutePagePath.APP: pageConfiguration(AppPage()),
           AppRoutePagePath.APP_START_PAGE: StartPage(),
@@ -32,50 +36,36 @@ class AppRoute {
     return _pageRoutes;
   }
 
-  static AbstractRoutes _abstractRoutes;
-  static PageRoutes _pageRoutes;
-
-  static PageRoutes get pageRoutes {
-    if (_abstractRoutes == null) {
-      _abstractRoutes =
-          HybridRoutes(routes: <AbstractRoutes>[_buildPageRoutes()]);
-    }
-    return _pageRoutes;
-  }
-
-  static AbstractRoutes get abstractRoutes {
-    if (_abstractRoutes == null) {
-      _abstractRoutes =
-          HybridRoutes(routes: <AbstractRoutes>[_buildPageRoutes()]);
-    }
-    return _abstractRoutes;
-  }
 }
 
 Page<T, dynamic> pageConfiguration<T extends GlobalBaseState<T>>(
     Page<T, dynamic> page) {
   return page
-
     ///connect with app-store
-    ..connectExtraStore(GlobalStore.store, (T pagestate, GlobalState appState) {
-      return ((pagestate.themeColor == appState.themeColor) &&
-              (pagestate.locale == appState.locale) &&
-              (pagestate.userLoginBean == appState.userLoginBean))
-          ? pagestate
-          : ((pagestate.clone())
-            ..themeColor = appState.themeColor
-            ..userLoginBean = appState.userLoginBean
-            ..locale = appState.locale);
-    })
-
-    ///updateMiddleware
-    ..updateMiddleware(
-      view: (List<ViewMiddleware<T>> viewMiddleware) {
-        viewMiddleware.add(safetyView<T>());
-      },
-      adapter: (List<AdapterMiddleware<T>> adapterMiddleware) {
-        adapterMiddleware.add(safetyAdapter<T>());
-      },
+    ..connectExtraStore(GlobalStore.store,
+        (Object pagestate, GlobalState appState) {
+       GlobalBaseState p = pagestate;
+       if((p.themeColor == appState.themeColor) &&
+           (p.locale == appState.locale) &&
+           (p.userLoginBean == appState.userLoginBean)){
+         return pagestate;
+       }else{
+         if (pagestate is Cloneable) {
+           final Object copy = pagestate.clone();
+           final GlobalBaseState newState = copy;
+           newState.themeColor = appState.themeColor;
+           newState.userLoginBean = appState.userLoginBean;
+           newState.locale = appState.locale;
+           return newState;
+         }
+       }
+    })..enhancer.append(
+      viewMiddleware: <ViewMiddleware<dynamic>>[safetyView<dynamic>()],
+      adapterMiddleware: <AdapterMiddleware<dynamic>>[
+        safetyAdapter<dynamic>()
+      ],
+      effectMiddleware: [],
+      middleware: <Middleware<dynamic>>[logMiddleware<dynamic>()],
     );
 }
 

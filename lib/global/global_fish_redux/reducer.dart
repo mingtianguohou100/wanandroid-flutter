@@ -22,7 +22,6 @@ GlobalState _changeThemeColor(GlobalState state, Action action) {
 
 GlobalState _changeLanguage(GlobalState state, Action action) {
   String _language = action.payload;
-
   ///本地化选择的语言
   SpUtils.saveAppLanguage(_language);
   return state.clone()..locale = Locale(_language, "");

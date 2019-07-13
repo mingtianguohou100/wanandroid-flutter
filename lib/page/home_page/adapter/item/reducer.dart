@@ -1,6 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
 
+import 'action.dart';
+
 Reducer<Datas> buildReducer() {
   return asReducer(
     <Object, Reducer<Datas>>{
@@ -8,3 +10,7 @@ Reducer<Datas> buildReducer() {
   );
 }
 
+//Datas _checkShowTopWidget(Datas state, Action action) {
+//  state.isLike = !state.isLike;
+//  return state;
+//}

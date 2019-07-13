@@ -19,7 +19,7 @@ class GlobalConstant {
   static const String CHINESE = "zh";
   static const String ENGLISH = "en";
 
-//主题
+  //主题
   static const List<Color> themeList = [
     Colors.black,
     Colors.red,

@@ -23,6 +23,7 @@ _onInitState(Action action, Context<HomeState> ctx) async {
   ctx.state.morePage = 1;
   ctx.state.isShowTopWiget = false;
   ctx.state.easyRefreshKey = GlobalKey<EasyRefreshState>();
+
   ctx.state.scrollController = ScrollController()
     ..addListener(() => ctx.dispatch(HomeActionCreator.checkShowTopWidget(
         ctx.state.scrollController.offset)));

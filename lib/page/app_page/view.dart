@@ -11,7 +11,7 @@ Widget buildView(AppState state, Dispatch dispatch, ViewService viewService) {
 
   return MaterialApp(
     // 去除 DEBUG 标签
-//            debugShowCheckedModeBanner: false,
+    debugShowCheckedModeBanner: true,
     localizationsDelegates: [
       S.delegate,
       GlobalMaterialLocalizations.delegate,
@@ -24,7 +24,7 @@ Widget buildView(AppState state, Dispatch dispatch, ViewService viewService) {
         primaryColor: GlobalConstant.themeList[_appState.themeColor]),
     home: AppRoute.pageRoutes.buildPage(AppRoutePagePath.APP_START_PAGE, null),
     onGenerateRoute: (RouteSettings settings) => MaterialPageRoute<Object>(
-        builder: (BuildContext context) => AppRoute.abstractRoutes
-            .buildPage(settings.name, settings.arguments)),
+        builder: (BuildContext context) =>
+            AppRoute.pageRoutes.buildPage(settings.name, settings.arguments)),
   );
 }

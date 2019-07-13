@@ -15,9 +15,10 @@ class HomePage extends Page<HomeState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<HomeState>(
-              adapter: HomeAdapter(),
+              adapter: NoneConn<HomeState>() + HomeAdapter(),
               slots: <String, Dependent<HomeState>>{
-                HomeComponentName.SIDESLIP: SideslipConnector() + SideslipComponent()
+                HomeComponentName.SIDESLIP:
+                    SideslipConnector() + SideslipComponent()
               }),
         );
 }

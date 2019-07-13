@@ -111,6 +111,8 @@ class Datas extends Object {
   @JsonKey(name: 'zan')
   int zan;
 
+  bool isLike=false;
+
   Datas(this.apkLink,this.author,this.chapterId,this.chapterName,this.collect,this.courseId,this.desc,this.envelopePic,this.fresh,this.id,this.link,this.niceDate,this.origin,this.prefix,this.projectLink,this.publishTime,this.superChapterId,this.superChapterName,this.tags,this.title,this.type,this.userId,this.visible,this.zan,);
 
   factory Datas.fromJson(Map<String, dynamic> srcJson) => _$DatasFromJson(srcJson);

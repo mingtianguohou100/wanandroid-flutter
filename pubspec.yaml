@@ -24,7 +24,7 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   #框架：https://pub.dev/packages/fish_redux#-installing-tab-
-  fish_redux: ^0.2.1
+  fish_redux: ^0.2.4
 
   #国际化：https://pub.dev/packages/flutter_i18n#-installing-tab-
   flutter_i18n: ^0.6.3

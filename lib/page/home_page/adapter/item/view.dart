@@ -5,12 +5,11 @@ import 'package:wanandroid_flutter/widget/my_web_page.dart';
 
 import 'action.dart';
 
-Widget buildView(
-    Datas state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Datas state, Dispatch dispatch, ViewService viewService) {
   Datas _item = state;
 
   return GestureDetector(
-    onTap: ()=>dispatch(HomeItemActionCreator.onItemClick()),
+    onTap: () => dispatch(HomeItemActionCreator.onItemClick()),
     child: Card(
       elevation: 10.0, //高度
       shape: RoundedRectangleBorder(
@@ -29,7 +28,7 @@ Widget buildView(
                     children: <Widget>[
                       Image.asset(
                         "resources/images/android.png",
-                        color: Theme.of(viewService.context).primaryColor,
+                        color: Colors.black,
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 5.0),
@@ -66,27 +65,11 @@ Widget buildView(
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                     style: TextStyle(
-                        color: Theme.of(viewService.context).primaryColor),
+                        color: Colors.black),
                   ),
-                  Listener(
-                    child: Image.asset("resources/images/aixing.png",
-                        color: _item.collect
-                            ? Theme.of(viewService.context).primaryColor
-                            : Colors.red),
-                    onPointerDown: (pue) {
-//                        SpUtils.getUserInfo((name, cookie) {
-//                          if (name != null && cookie != null) {
-//                            Navigator.of(context).push(MaterialPageRoute(
-//                                builder: (BuildContext context) {
-//                              return LoginPage();
-//                            }));
-//                          } else {
-//                            CommonService.instance.getAddCollect(
-//                                items.id, (String data) {},
-//                                onErro: (e) {});
-//                          }
-//                        }, (e) {});
-                    },
+                  IconButton(
+                    icon: Image.asset("resources/images/aixing.png",
+                        color: Colors.red),
                   ),
                 ],
               ),
