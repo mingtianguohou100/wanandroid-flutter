@@ -71,7 +71,7 @@ widget:自定义和自己封装的一些widget
 
 
 ## **android端主界面**
-![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/android_img.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/ios-demonstration.gif)
 
 ## **Ios主界面**
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/ios_img.png)
