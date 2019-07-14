@@ -37,7 +37,7 @@ widget:自定义和自己封装的一些widget
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/android_img.png)
 
 ## **Ios**
-![image](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/android_img.png)
+![image](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/ios_img.png)
 
 
 
