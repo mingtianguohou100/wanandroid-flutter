@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
 
 import 'action.dart';
 import 'state.dart';
@@ -12,7 +13,7 @@ Reducer<StartState> buildReducer() {
   );
 }
 
-StartState _pageview_listner(StartState state, Action action) {
+StartState _pageview_listner(StartState state, prefix0.Action action) {
   int index=action.payload;
 
   final StartState newState = state.clone();

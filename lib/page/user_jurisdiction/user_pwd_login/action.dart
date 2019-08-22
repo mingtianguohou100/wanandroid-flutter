@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum UserPwdLoginAction { onRegister,onLogin }
+enum UserPwdLoginAction { onRegister, onLogin, updAnimation,successCallback }
 
 class UserPwdLoginActionCreator {
   static Action onRegister() {
@@ -10,5 +10,13 @@ class UserPwdLoginActionCreator {
 
   static Action onLogin() {
     return const Action(UserPwdLoginAction.onLogin);
+  }
+
+  static Action updAnimation(String animationString) {
+    return Action(UserPwdLoginAction.updAnimation, payload: animationString);
+  }
+
+  static Action successCallback() {
+    return Action(UserPwdLoginAction.successCallback);
   }
 }

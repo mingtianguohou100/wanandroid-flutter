@@ -10,6 +10,7 @@ Reducer<HomeState> buildReducer() {
       HomeAction.checkShowTopWidget: _checkShowTopWidget,
       HomeAction.refreshData: _refreshDate,
       HomeAction.moreData: _moreData,
+      HomeAction.bggClick:_bggClick,
     },
   );
 }
@@ -19,6 +20,18 @@ HomeState _initData(HomeState state, Action action) {
   final HomeState newState = state.clone();
   newState.homeItems = tuple2.i0;
   newState.homeBanners = tuple2.i1;
+  return newState;
+}
+
+HomeState _bggClick(HomeState state, Action action) {
+  final HomeState newState = state.clone();
+  if(newState.bggAnimationTag){
+    newState.bggAnimationString="Stomp";
+    newState.bggAnimationTag=false;
+  }else{
+    newState.bggAnimationString="Walk";
+    newState.bggAnimationTag=true;
+  }
   return newState;
 }
 

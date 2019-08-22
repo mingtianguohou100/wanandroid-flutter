@@ -4,6 +4,7 @@ import 'package:wanandroid_flutter/utils/common_util.dart';
 import 'action.dart';
 import 'db/sql_manager.dart';
 import 'state.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
 
 Effect<TestDataBaseState> buildEffect() {
   return combineEffects(<Object, Effect<TestDataBaseState>>{
@@ -16,24 +17,24 @@ Effect<TestDataBaseState> buildEffect() {
   });
 }
 
-void _initState(Action action, Context<TestDataBaseState> ctx) {
+void _initState(prefix0.Action action, Context<TestDataBaseState> ctx) {
   ctx.state.globalKey = GlobalKey();
   ctx.state.textEditingController = TextEditingController();
 }
 
-void _dispose(Action action, Context<TestDataBaseState> ctx) {
+void _dispose(prefix0.Action action, Context<TestDataBaseState> ctx) {
   ctx.state.textEditingController.dispose();
 }
 
 ///查询所有表
-void _onQueryAllTab(Action action, Context<TestDataBaseState> ctx) {
+void _onQueryAllTab(prefix0.Action action, Context<TestDataBaseState> ctx) {
   SqlManager.getAllTab().then((data) {
     ctx.dispatch(TestDataBaseActionCreator.queryAllTab(data));
   });
 }
 
 ///查询指定表是否存在
-void _onQueryTab(Action action, Context<TestDataBaseState> ctx) {
+void _onQueryTab(prefix0.Action action, Context<TestDataBaseState> ctx) {
   String content = ctx.state.textEditingController.text;
   if (content != null && content.length > 0) {
     SqlManager.isTableExist(content).then((data) {
@@ -46,7 +47,7 @@ void _onQueryTab(Action action, Context<TestDataBaseState> ctx) {
 }
 
 ///创建表
-void _onCreateTab(Action action, Context<TestDataBaseState> ctx) {
+void _onCreateTab(prefix0.Action action, Context<TestDataBaseState> ctx) {
   String content = ctx.state.textEditingController.text;
   if (content != null && content.length > 0) {
     SqlManager.isTableExist(content).then((data){
@@ -66,7 +67,7 @@ void _onCreateTab(Action action, Context<TestDataBaseState> ctx) {
 }
 
 ///删除表
-void _onDeleteTab(Action action, Context<TestDataBaseState> ctx) {
+void _onDeleteTab(prefix0.Action action, Context<TestDataBaseState> ctx) {
   String content = ctx.state.textEditingController.text;
   if (content != null && content.length > 0) {
     SqlManager.isTableExist(content).then((data) {

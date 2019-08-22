@@ -5,6 +5,7 @@ import 'package:video_player/video_player.dart';
 import 'package:wanandroid_flutter/global/app_route.dart';
 import 'action.dart';
 import 'state.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
 
 Effect<StartState> buildEffect() {
   return combineEffects(<Object, Effect<StartState>>{
@@ -14,12 +15,12 @@ Effect<StartState> buildEffect() {
   });
 }
 
-void _onHome(Action action, Context<StartState> ctx) {
+void _onHome(prefix0.Action action, Context<StartState> ctx) {
   Navigator.of(ctx.context).pop();
   Navigator.of(ctx.context).pushNamed(AppRoutePagePath.HOME_PAGE);
 }
 
-void _onInitState(Action action, Context<StartState> ctx) {
+void _onInitState(prefix0.Action action, Context<StartState> ctx) {
   Future<void> initController(VideoPlayerController controller) async {
     controller.setLooping(true);
     controller.setVolume(0.0);
@@ -32,7 +33,7 @@ void _onInitState(Action action, Context<StartState> ctx) {
   initController(ctx.state.videoPlayerController_thread);
 }
 
-void _onDispose(Action action, Context<StartState> ctx) {
+void _onDispose(prefix0.Action action, Context<StartState> ctx) {
   ctx.state.videoPlayerController.dispose();
   ctx.state.videoPlayerController_one.dispose();
   ctx.state.videoPlayerController_thread.dispose();

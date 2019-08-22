@@ -8,11 +8,15 @@ class UserPwdLoginState implements Cloneable<UserPwdLoginState> {
   TextEditingController textEditingController_count;
   TextEditingController textEditingController_password;
 
+  String teddyString;
+
+
   @override
   UserPwdLoginState clone() {
     return UserPwdLoginState()
       ..formKey = formKey
       ..global = global
+      ..teddyString=teddyString
       ..textEditingController_count = textEditingController_count
       ..textEditingController_password = textEditingController_password;
   }

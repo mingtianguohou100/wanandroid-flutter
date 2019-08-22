@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:nima/nima_actor.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/global/global_constant.dart';
 import 'action.dart';
@@ -12,9 +12,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   HomeState _homeState = state.clone();
   ListAdapter _adapter = viewService.buildAdapter();
 
-  /*
-  * 退出APP确认提示
-  ***/
+  ///退出APP确认提示
   Future<bool> exitAppTotast() async {
     return showDialog(
             context: viewService.context,
@@ -41,7 +39,6 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
         Future.value(false);
   }
 
-
   return WillPopScope(
     child: Scaffold(
       appBar: AppBar(
@@ -55,21 +52,41 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               backgroundColor: GlobalConstant.themeList[_homeState.themeColor],
             )
           : null,
-      body: EasyRefresh(
-        key: _homeState.easyRefreshKey,
-        child: ListView.builder(
-          controller:_homeState.scrollController ,
-          itemBuilder: _adapter.itemBuilder,
-          itemCount: _adapter.itemCount,
-        ),
-        onRefresh: () async {
-          dispatch(HomeActionCreator.onRefreshData());
-          _homeState.easyRefreshKey.currentState.callRefreshFinish();
-        },
-        loadMore: () async {
-          dispatch(HomeActionCreator.onMoreData());
-          _homeState.easyRefreshKey.currentState.callLoadMoreFinish();
-        },
+      body: Stack(
+        alignment: Alignment.bottomRight,
+        children: <Widget>[
+          EasyRefresh(
+            key: _homeState.easyRefreshKey,
+            child: ListView.builder(
+              controller: _homeState.scrollController,
+              itemBuilder: _adapter.itemBuilder,
+              itemCount: _adapter.itemCount,
+            ),
+            onRefresh: () async {
+              dispatch(HomeActionCreator.onRefreshData());
+              _homeState.easyRefreshKey.currentState.callRefreshFinish();
+            },
+            loadMore: () async {
+              dispatch(HomeActionCreator.onMoreData());
+              _homeState.easyRefreshKey.currentState.callLoadMoreFinish();
+            },
+          ),
+          GestureDetector(
+            onTap: () => dispatch(HomeActionCreator.bggClick()),
+            child: Container(
+              child: NimaActor(
+                "resources/animations/Big Green Guy.nima",
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+                controller: _homeState.bigGreenGuyController,
+                animation: _homeState.bggAnimationString,
+              ),
+              margin: EdgeInsets.only(bottom: 100,right: 10),
+              width: 200.0,
+              height: 170.0,
+            ),
+          ),
+        ],
       ),
     ),
     onWillPop: exitAppTotast,

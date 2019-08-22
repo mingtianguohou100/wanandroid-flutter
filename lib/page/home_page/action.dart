@@ -10,12 +10,17 @@ enum HomeAction {
   refreshData,
   moreData,
   goTop,
-  checkShowTopWidget
+  checkShowTopWidget,
+  bggClick,
 }
 
 class HomeActionCreator {
   static Action onRefreshData() {
     return const Action(HomeAction.onRefreshData);
+  }
+
+  static Action bggClick() {
+    return const Action(HomeAction.bggClick);
   }
 
   static Action onMoreData() {
@@ -42,6 +47,6 @@ class HomeActionCreator {
   }
 
   static Action checkShowTopWidget(double offset) {
-    return Action(HomeAction.checkShowTopWidget,payload: offset);
+    return Action(HomeAction.checkShowTopWidget, payload: offset);
   }
 }

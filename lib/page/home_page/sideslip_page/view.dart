@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/global/global_constant.dart';
@@ -233,6 +234,25 @@ Widget buildView(
         ));
   }
 
+  Widget _buildLowPolyWolf() {
+    return Container(
+      margin:EdgeInsets.only(top: 50.0),
+      child: GestureDetector(
+      onTap: () => dispatch(SideslipActionCreator.lowPolyWolfClick()),
+      child: SizedBox(
+        width: 200.0,
+        height: 200.0,
+        child: FlareActor("resources/animations/low_poly_wolf.flr",
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+            color: _sideslipState.lpwColor,
+//            controller: _sideslipState.lowPolyWolfController,
+            callback: (name)=>dispatch(SideslipActionCreator.closeLowPolyWolf()),
+            animation: _sideslipState.lpwString),
+      ),
+    ),);
+  }
+
   return Drawer(
       child: SingleChildScrollView(
     physics: BouncingScrollPhysics(),
@@ -256,10 +276,9 @@ Widget buildView(
 //            }
 //          }, (e) {});
 //        }),
-//              createDrawerTile(_i18nS.often_ui_widget, Icons.star,
-//                      () {
-//                    dispatch(SideslipActionCreator.onJumpTestOption());
-//                  }),
+          createDrawerTile(_i18nS.often_ui_widget, Icons.star, () {
+            dispatch(SideslipActionCreator.onJumpTestOption());
+          }),
 
           createDrawerTile(_i18nS.switch_theme, Icons.signal_wifi_4_bar, () {
             switchTheme(viewService.context);
@@ -270,6 +289,8 @@ Widget buildView(
           createDrawerTile(_i18nS.about_author, Icons.person, () {
             createAbout(viewService.context);
           }),
+          _buildLowPolyWolf(),
+
           Container(
             child: Offstage(
               offstage: _userLocation == null ? true : false,

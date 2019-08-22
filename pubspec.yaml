@@ -68,7 +68,8 @@ dependencies:
   #工具类:https://pub.dev/packages/common_utils#-installing-tab-
   common_utils: ^1.1.1
 
-
+  nima: ^1.0.0
+  flare_flutter: ^1.4.0
 
 dev_dependencies:
   #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-
@@ -108,7 +109,10 @@ flutter:
      - resources/video/guide_one.mp4
      - resources/video/guide_two.mp4
      - resources/video/guide_thread.mp4
-
+     - resources/animations/Big Green Guy.nima
+     - resources/animations/Big Green Guy.png
+     - resources/animations/low_poly_wolf.flr
+     - resources/animations/Teddy.flr
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

@@ -4,6 +4,7 @@ import 'package:wanandroid_flutter/utils/sp_utils.dart';
 import 'action.dart';
 import 'state.dart';
 import 'package:flutter/material.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
 
 Reducer<GlobalState> buildReducer() {
   return asReducer(
@@ -15,19 +16,19 @@ Reducer<GlobalState> buildReducer() {
   );
 }
 
-GlobalState _changeThemeColor(GlobalState state, Action action) {
+GlobalState _changeThemeColor(GlobalState state, prefix0.Action action) {
   int index = action.payload;
   return state.clone()..themeColor = index;
 }
 
-GlobalState _changeLanguage(GlobalState state, Action action) {
+GlobalState _changeLanguage(GlobalState state, prefix0.Action action) {
   String _language = action.payload;
   ///本地化选择的语言
   SpUtils.saveAppLanguage(_language);
   return state.clone()..locale = Locale(_language, "");
 }
 
-GlobalState _changeUserData(GlobalState state, Action action) {
+GlobalState _changeUserData(GlobalState state, prefix0.Action action) {
   UserLoginBean userData = action.payload;
   SpUtils.saveUserInfo(userData==null?"":userData.toJson().toString());
   return state.clone()..userLoginBean = userData;

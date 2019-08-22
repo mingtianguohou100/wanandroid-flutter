@@ -1,11 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:wanandroid_flutter/model/HomeHeadBannerBean.dart';
 import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
 import 'package:wanandroid_flutter/net/common_service.dart';
+import 'package:wanandroid_flutter/widget/big_green_guy_controller.dart';
 import 'action.dart';
 import 'state.dart';
 
@@ -19,29 +20,33 @@ Effect<HomeState> buildEffect() {
   });
 }
 
-_onInitState(Action action, Context<HomeState> ctx) async {
+_onInitState(prefix0.Action action, Context<HomeState> ctx) async {
   ctx.state.morePage = 1;
   ctx.state.isShowTopWiget = false;
   ctx.state.easyRefreshKey = GlobalKey<EasyRefreshState>();
-
+  ctx.state.bigGreenGuyController = BigGreenGuyController();
+  ctx.state.bggAnimationTag=true;
+  ctx.state.bggAnimationString="Walk";
   ctx.state.scrollController = ScrollController()
     ..addListener(() => ctx.dispatch(HomeActionCreator.checkShowTopWidget(
         ctx.state.scrollController.offset)));
   requestRefreshData(ctx, true);
 }
 
-_goTop(Action action, Context<HomeState> ctx) => ctx.state.scrollController
+_goTop(prefix0.Action action, Context<HomeState> ctx) => ctx
+    .state.scrollController
     .animateTo(0, duration: Duration(milliseconds: 500), curve: Curves.linear);
 
-_onDispose(Action action, Context<HomeState> ctx) {
+_onDispose(prefix0.Action action, Context<HomeState> ctx) {
   ctx.state.scrollController.dispose();
 }
 
-_onRfreshDate(Action action, Context<HomeState> ctx) {
+_onRfreshDate(prefix0.Action action, Context<HomeState> ctx) {
   requestRefreshData(ctx, false);
 }
 
-_onMoreData(Action action, Context<HomeState> ctx) => requestMoreData(ctx);
+_onMoreData(prefix0.Action action, Context<HomeState> ctx) =>
+    requestMoreData(ctx);
 
 requestRefreshData(Context<HomeState> ctx, bool isOneReques) async {
   List<HomeHeadBannerBean> homeBannerList;

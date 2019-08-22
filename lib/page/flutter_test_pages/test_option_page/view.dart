@@ -19,7 +19,7 @@ Widget buildView(
       leading: Icon(
         Icons.star,
       ),
-      onTap:()=>dispatch(fc),
+      onTap: () => dispatch(fc),
     );
   }
 
@@ -29,10 +29,12 @@ Widget buildView(
     ),
     body: ListView(
       children: <Widget>[
+//        //数据库
+//        createItem(_i18nS.sqflite, () {
+//          TestOptionActionCreator.onDataBase();
+//        }),
         //数据库
-        createItem(_i18nS.sqflite, () {
-          TestOptionActionCreator.onDataBase();
-        }),
+        createItem(_i18nS.route_widget, TestOptionActionCreator.onRoute()),
       ],
     ),
   );

@@ -126,7 +126,7 @@ class zh extends S {
   @override
   String get register_ok => "注册成功";
   @override
-  String get often_ui_widget => "常用UI控件";
+  String get often_ui_widget => "Widget实验室";
   @override
   String get read => "红色";
   @override

@@ -7,9 +7,11 @@ import 'package:wanandroid_flutter/global/global_fish_redux/store.dart';
 import 'package:wanandroid_flutter/net/common_service.dart';
 import 'action.dart';
 import 'state.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
 
 Effect<SideslipState> buildEffect() {
   return combineEffects(<Object, Effect<SideslipState>>{
+    Lifecycle.initState: _onInitState,
     SideslipAction.onChangeLanguage: _onChangeLanguage,
     SideslipAction.onChangeThemeColor: _onChangeThemeColor,
     SideslipAction.onLogin: _onLogin,
@@ -18,30 +20,35 @@ Effect<SideslipState> buildEffect() {
   });
 }
 
-void _onChangeLanguage(Action action, Context<SideslipState> ctx) {
+void _onInitState(prefix0.Action action, Context<SideslipState> ctx) {
+  ctx.dispatch(SideslipActionCreator.lowPolyWolfClick());
+}
+
+void _onChangeLanguage(prefix0.Action action, Context<SideslipState> ctx) {
   GlobalStore.store
       .dispatch(GlobalActionCreator.changeLanguage(action.payload));
   Navigator.of(ctx.context).pop();
 }
 
-void _onChangeThemeColor(Action action, Context<SideslipState> ctx) {
+void _onChangeThemeColor(prefix0.Action action, Context<SideslipState> ctx) {
   GlobalStore.store
       .dispatch(GlobalActionCreator.changeThemeColor(action.payload));
   Navigator.of(ctx.context).pop();
 }
 
-void _onLogin(Action action, Context<SideslipState> ctx) =>
+void _onLogin(prefix0.Action action, Context<SideslipState> ctx) =>
     Navigator.of(ctx.context)
         .pushNamed(AppRoutePagePath.USER_PWD_LOGIN, arguments: action.payload);
 
-void _onLoginOut(Action action, Context<SideslipState> ctx) => requestLogOut();
+void _onLoginOut(prefix0.Action action, Context<SideslipState> ctx) =>
+    requestLogOut();
 
 //跳转testOptionPage
-void _onJumpTestOption(Action action, Context<SideslipState> ctx) =>
+void _onJumpTestOption(prefix0.Action action, Context<SideslipState> ctx) =>
     Navigator.of(ctx.context).pushNamed(AppRoutePagePath.TEST_OPTION);
 
 //退出登录
-void requestLogOut() async{
+void requestLogOut() async {
   CommonService.instance.logOut().then((data) {
     GlobalStore.store.dispatch(GlobalActionCreator.changeUserData(null));
   }, onError: (e) {});

@@ -4,6 +4,8 @@ import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'package:wanandroid_flutter/net/common_service.dart';
 import 'package:wanandroid_flutter/utils/common_util.dart';
 import 'action.dart';
+import 'package:fish_redux/fish_redux.dart' as prefix0;
+
 import 'package:wanandroid_flutter/generated/i18n.dart';
 
 import 'state.dart';
@@ -17,19 +19,19 @@ Effect<UserRegisterState> buildEffect() {
   });
 }
 
-void _onInitStete(Action action, Context<UserRegisterState> ctx) {
+void _onInitStete(prefix0.Action action, Context<UserRegisterState> ctx) {
   ctx.state.global = GlobalKey<ScaffoldState>();
   ctx.state.formKey = GlobalKey<FormState>();
   ctx.state.textEditingController_count = TextEditingController();
   ctx.state.textEditingController_password = TextEditingController();
 }
 
-void _onDispose(Action action, Context<UserRegisterState> ctx) {
+void _onDispose(prefix0.Action action, Context<UserRegisterState> ctx) {
   ctx.state.textEditingController_count.dispose();
   ctx.state.textEditingController_password.dispose();
 }
 
-void _onRegiestCheckRegister(Action action, Context<UserRegisterState> ctx) {
+void _onRegiestCheckRegister(prefix0.Action action, Context<UserRegisterState> ctx) {
   (ctx.state.formKey.currentState as FormState).validate()
       ? CommonService.instance.getRegister({
           "username": ctx.state.textEditingController_count.text,

@@ -6,11 +6,16 @@ enum SideslipAction {
   onLoginOut,
   onJumpTestOption,
   onChangeLanguage,
-  onChangeThemeColor
+  onChangeThemeColor,
+  lowPolyWolfClick,
+  closeLowPolyWolf
 }
 
 class SideslipActionCreator {
   static Action onLogin() => const Action(SideslipAction.onLogin);
+  static Action closeLowPolyWolf() => const Action(SideslipAction.closeLowPolyWolf);
+
+  static Action lowPolyWolfClick() => const Action(SideslipAction.lowPolyWolfClick);
 
   static Action onLoginOut() => const Action(SideslipAction.onLoginOut);
 
