@@ -12,8 +12,14 @@
 
 2.使用闲鱼的fish-redux框架重构项目，体验来说确实写着很爽，逻辑分离，不像以前写flutter感觉很混乱，所有逻辑样式全部混在一起，代码越来越臃肿是必然，而fish-redux实现了逻辑界面分离，清晰，总的来说，很爽，适合大型项目
 
-
+## **启动页**
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/gif/startPage.gif)
+
+
+## **2dimensions登陆界面**
+![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/gif/demonstration.gif)
+
+
 ## **项目结构**
 ![在这里插入图片描述](https://raw.githubusercontent.com/mingtianguohou100/wanandroid-flutter/master/resources/project_resources/project_structure.png)
 
