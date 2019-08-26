@@ -276,9 +276,9 @@ Widget buildView(
 //            }
 //          }, (e) {});
 //        }),
-          createDrawerTile(_i18nS.often_ui_widget, Icons.star, () {
-            dispatch(SideslipActionCreator.onJumpTestOption());
-          }),
+//          createDrawerTile(_i18nS.often_ui_widget, Icons.star, () {
+//            dispatch(SideslipActionCreator.onJumpTestOption());
+//          }),
 
           createDrawerTile(_i18nS.switch_theme, Icons.signal_wifi_4_bar, () {
             switchTheme(viewService.context);
