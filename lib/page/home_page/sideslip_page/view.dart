@@ -5,6 +5,7 @@ import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/global/global_constant.dart';
 import 'package:wanandroid_flutter/global/global_fish_redux/action.dart';
 import 'package:wanandroid_flutter/global/global_fish_redux/store.dart';
+import 'package:wanandroid_flutter/global/global_theme_style.dart';
 import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'package:wanandroid_flutter/widget/my_web_page.dart';
 import 'action.dart';
@@ -47,7 +48,7 @@ Widget buildView(
       onTap: () => dispatch(SideslipActionCreator.changeThemeColor(position)),
       child: Container(
         margin: const EdgeInsets.all(10.0),
-        color: GlobalConstant.themeList[position],
+        color: GlobalThemeStyle.themeList[position],
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
@@ -79,7 +80,7 @@ Widget buildView(
   * **/
   void switchTheme(BuildContext context) {
     List<Widget> items = new List();
-    for (int i = 0; i < GlobalConstant.themeList.length; i++) {
+    for (int i = 0; i < GlobalThemeStyle.themeList.length; i++) {
       items.add(createThemeItem(context, i));
     }
     showDialog(
@@ -110,9 +111,9 @@ Widget buildView(
           return SimpleDialog(
             children: <Widget>[
               createLagItem("中文",
-                  SideslipActionCreator.changeLanguage(GlobalConstant.CHINESE)),
+                  SideslipActionCreator.changeLanguage(GlobalThemeStyle.CHINESE)),
               createLagItem("English",
-                  SideslipActionCreator.changeLanguage(GlobalConstant.ENGLISH)),
+                  SideslipActionCreator.changeLanguage(GlobalThemeStyle.ENGLISH)),
             ],
           );
         });

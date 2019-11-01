@@ -25,8 +25,8 @@ _onInitState(prefix0.Action action, Context<HomeState> ctx) async {
   ctx.state.isShowTopWiget = false;
   ctx.state.easyRefreshKey = GlobalKey<EasyRefreshState>();
   ctx.state.bigGreenGuyController = BigGreenGuyController();
-  ctx.state.bggAnimationTag=true;
-  ctx.state.bggAnimationString="Walk";
+  ctx.state.bggAnimationTag = true;
+  ctx.state.bggAnimationString = "Walk";
   ctx.state.scrollController = ScrollController()
     ..addListener(() => ctx.dispatch(HomeActionCreator.checkShowTopWidget(
         ctx.state.scrollController.offset)));
@@ -51,18 +51,21 @@ _onMoreData(prefix0.Action action, Context<HomeState> ctx) =>
 requestRefreshData(Context<HomeState> ctx, bool isOneReques) async {
   List<HomeHeadBannerBean> homeBannerList;
   List<Datas> homeInfomationList;
-  await CommonService.instance.refreshHomeList(1).then((data) {
+  await CommonService.instance.refreshHomeList(1,context: ctx.context).then((data) {
     homeInfomationList = HomeInfomationBean.fromJson(data).datas;
 
-    CommonService.instance.refreshBanner().then((data) {
+    CommonService.instance.refreshBanner(context: ctx.context).then((data) {
       homeBannerList = getHomeHeadBannerBeanList(data);
       isOneReques
           ? ctx.dispatch(
               HomeActionCreator.initData(homeInfomationList, homeBannerList))
           : ctx.dispatch(HomeActionCreator.refreshData(
               homeInfomationList, homeBannerList));
-    }, onError: (e) {});
-  }, onError: (e) {});
+    }, onError: (e) {
+
+    });
+  }, onError: (e) {
+  });
 }
 
 ///加载更多

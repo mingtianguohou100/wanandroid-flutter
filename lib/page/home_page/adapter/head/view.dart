@@ -1,8 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/model/HomeHeadBannerBean.dart';
-import 'package:wanandroid_flutter/widget/my_web_page.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'action.dart';
 import 'state.dart';

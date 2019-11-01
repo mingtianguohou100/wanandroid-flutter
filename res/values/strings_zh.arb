@@ -1,10 +1,10 @@
 {
+  "global_no_network": "请检查手机网络!",
   "home_title": "玩Android",
   "language": "english",
   "recommend_infomation": "精选文章",
   "sure_outlogin": "确定退出APP吗?",
   "now_into": "立即进入",
-  ///侧滑菜单
   "often_ui_widget": "常用UI控件",
   "click_login": "点击登录",
   "isLoginOut": "确定要退出登录吗?",
@@ -47,6 +47,5 @@
   "layout_example": "布局控件",
   "route_widget": "路由",
   "animation_example": "动画",
-  ///testWidget
   "sqflite": "sqflite数据库"
 }

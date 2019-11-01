@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:wanandroid_flutter/global/global_constant.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/global/app_route.dart';
+import 'package:wanandroid_flutter/global/global_theme_style.dart';
 import 'state.dart';
 
 Widget buildView(AppState state, Dispatch dispatch, ViewService viewService) {
@@ -21,7 +22,7 @@ Widget buildView(AppState state, Dispatch dispatch, ViewService viewService) {
     supportedLocales: S.delegate.supportedLocales,
     theme: ThemeData(
         platform: TargetPlatform.iOS,
-        primaryColor: GlobalConstant.themeList[_appState.themeColor]),
+        primaryColor: GlobalThemeStyle.themeList[_appState.themeColor]),
     home: AppRoute.pageRoutes.buildPage(AppRoutePagePath.APP_START_PAGE, null),
     onGenerateRoute: (RouteSettings settings) => MaterialPageRoute<Object>(
         builder: (BuildContext context) =>

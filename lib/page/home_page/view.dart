@@ -5,6 +5,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:nima/nima_actor.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
 import 'package:wanandroid_flutter/global/global_constant.dart';
+import 'package:wanandroid_flutter/global/global_theme_style.dart';
 import 'action.dart';
 import 'state.dart';
 
@@ -49,7 +50,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
           ? FloatingActionButton(
               onPressed: () => dispatch(HomeActionCreator.goTop()),
               child: Icon(Icons.keyboard_arrow_up),
-              backgroundColor: GlobalConstant.themeList[_homeState.themeColor],
+              backgroundColor: GlobalThemeStyle.themeList[_homeState.themeColor],
             )
           : null,
       body: Stack(

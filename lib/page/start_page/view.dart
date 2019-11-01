@@ -2,9 +2,6 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/app_route.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_data_base_page/db/sql_manager.dart';
-
 import 'action.dart';
 import 'state.dart';
 

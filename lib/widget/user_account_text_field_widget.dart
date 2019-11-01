@@ -1,12 +1,8 @@
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/utils/common_util.dart';
 
-/*
-* 登陆注册时的通用TextFormField
-* **/
+///登陆注册时的通用TextFormField
 class UserAccountTextFieldWidget extends StatefulWidget {
   bool _isTag;
   TextEditingController _textEditingController;
@@ -44,27 +40,25 @@ class _UserAccountTextFieldWidgetState
         validator: (v) {
           return widget._isTag
               ? (v.toString().length > 0
-              ? null
-              : S.of(context).input_content_count)
+                  ? null
+                  : S.of(context).input_content_count)
               : (v.toString().length > 5
-              ? null
-              : S.of(context).input_content_pwd);
+                  ? null
+                  : S.of(context).input_content_pwd);
         },
         keyboardType: widget._isTag ? TextInputType.phone : TextInputType.text,
         obscureText: widget._isTag ? false : true,
         decoration: InputDecoration(
-            labelText: widget._isTag
-                ? S.of(context).account
-                :S.of(context).password,
+            labelText:
+                widget._isTag ? S.of(context).account : S.of(context).password,
             hintText: widget._isTag
                 ? S.of(context).inputAccount
                 : S.of(context).inputPassWord,
             prefixIcon: _select_focus
                 ? Image.asset(
-              "resources/images/huo_true.png",
-            )
+                    "resources/images/huo_true.png",
+                  )
                 : Image.asset("resources/images/huo_false.png")));
-
   }
 
   @override

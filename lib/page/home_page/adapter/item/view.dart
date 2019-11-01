@@ -1,8 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
-import 'package:wanandroid_flutter/widget/my_web_page.dart';
-
 import 'action.dart';
 
 Widget buildView(Datas state, Dispatch dispatch, ViewService viewService) {
@@ -64,8 +62,7 @@ Widget buildView(Datas state, Dispatch dispatch, ViewService viewService) {
                     _item.author,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
-                    style: TextStyle(
-                        color: Colors.black),
+                    style: TextStyle(color: Colors.black),
                   ),
                   IconButton(
                     icon: Image.asset("resources/images/aixing.png",

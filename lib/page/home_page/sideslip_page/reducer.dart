@@ -1,9 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:wanandroid_flutter/global/global_constant.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/action.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/store.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;
+import 'package:wanandroid_flutter/global/global_theme_style.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -23,12 +20,12 @@ SideslipState _lowPolyWolfClick(SideslipState state, prefix0.Action action) {
   if (newState.lpwAnimaIsCom) {
     newState.lpwAnimaIsCom = false;
     newState.lpwString = "Go";
-    if (newState.colorIndex < GlobalConstant.themeList.length) {
+    if (newState.colorIndex < GlobalThemeStyle.themeList.length) {
       newState.colorIndex++;
     } else {
       newState.colorIndex = 0;
     }
-    newState.lpwColor = GlobalConstant.themeList[newState.colorIndex];
+    newState.lpwColor = GlobalThemeStyle.themeList[newState.colorIndex];
   }
   return newState;
 }

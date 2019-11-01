@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:video_player/video_player.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/state.dart';
 
 class StartState implements Cloneable<StartState> {
   PageController pageController;

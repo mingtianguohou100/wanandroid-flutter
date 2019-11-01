@@ -1,10 +1,10 @@
 {
+  "global_no_network": " Please check the mobile network!",
   "home_title": "play Android",
   "language": "chinese",
   "recommend_infomation": "information",
   "sure_outlogin": " Are you sure you want to quit app? ",
   "now_into": "Now in to",
-  ///侧滑菜单
   "often_ui_widget": "oftenUiWidget",
   "click_login": "click login",
   "isLoginOut": "Are you sure you want to log out?",
@@ -48,6 +48,5 @@
   "layout_example": "layout_widget",
   "route_widget": "route",
   "animation_example": "animation",
-  ///testWidget
   "sqflite": "sqflite data base"
 }

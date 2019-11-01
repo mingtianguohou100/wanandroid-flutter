@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -7,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 ///常用tools
 class CommonUilt {
   ///吐司
-  static shoToast(@required String msg,
+  static shoToast(String msg,
       {Toast toastLength = Toast.LENGTH_SHORT,
       double fontSize = 16.0,
       Color backgroundColor = Colors.black,
@@ -34,4 +32,17 @@ class CommonUilt {
     );
   }
 
+  ///将map转为拼接成url键值对
+  static String mapParamsToUrl(Map<String, String> params) {
+    if (params != null && params.isNotEmpty) {
+      StringBuffer sb = new StringBuffer("?");
+      params.forEach((key, value) {
+        sb.write("$key" + "=" + "$value" + "&");
+      });
+      String paramStr = sb.toString();
+      paramStr = paramStr.substring(0, paramStr.length - 1);
+      return paramStr;
+    }
+    return "";
+  }
 }

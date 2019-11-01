@@ -16,7 +16,6 @@ Effect<SideslipState> buildEffect() {
     SideslipAction.onChangeThemeColor: _onChangeThemeColor,
     SideslipAction.onLogin: _onLogin,
     SideslipAction.onLoginOut: _onLoginOut,
-    SideslipAction.onJumpTestOption: _onJumpTestOption,
   });
 }
 
@@ -43,9 +42,6 @@ void _onLogin(prefix0.Action action, Context<SideslipState> ctx) =>
 void _onLoginOut(prefix0.Action action, Context<SideslipState> ctx) =>
     requestLogOut();
 
-//跳转testOptionPage
-void _onJumpTestOption(prefix0.Action action, Context<SideslipState> ctx) =>
-    Navigator.of(ctx.context).pushNamed(AppRoutePagePath.TEST_OPTION);
 
 //退出登录
 void requestLogOut() async {

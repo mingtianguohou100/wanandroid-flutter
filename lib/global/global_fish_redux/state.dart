@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter/model/UserLoginBean.dart';
-import 'package:wanandroid_flutter/utils/sp_utils.dart';
 
 abstract class GlobalBaseState<T extends Cloneable<T>> implements Cloneable<T> {
   int get themeColor;

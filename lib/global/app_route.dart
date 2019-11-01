@@ -1,12 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:wanandroid_flutter/page/app_page/page.dart';
 import 'package:wanandroid_flutter/page/currency_webpage/page.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_data_base_page/page.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_option_page/page.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_route_pages/test_route_one/page.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_route_pages/test_route_page/page.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_route_pages/test_route_thread/page.dart';
-import 'package:wanandroid_flutter/page/flutter_test_pages/test_route_pages/test_route_two/page.dart';
 import 'package:wanandroid_flutter/page/home_page/page.dart';
 import 'package:wanandroid_flutter/page/start_page/page.dart';
 import 'package:wanandroid_flutter/page/user_jurisdiction/user_pwd_login/page.dart';
@@ -28,14 +22,6 @@ class AppRoute {
           AppRoutePagePath.USER_PWD_LOGIN: UserPwdLoginPage(),
           AppRoutePagePath.USER_PWD_REGISTER: UserRegisterPage(),
           AppRoutePagePath.CURRENCY_WEB_VIEW: CurrencyWebViewPage(),
-
-          ///testWIdget
-          AppRoutePagePath.TEST_OPTION: TestOptionPage(),
-          AppRoutePagePath.TEST_DATA_BASE: TestDataBasePage(),
-          AppRoutePagePath.TEST_ROUTE: TestRoutePage(),
-          AppRoutePagePath.TEST_ROUTE_ONE: TestRouteOnePage(),
-          AppRoutePagePath.TEST_ROUTE_TWO: TestRouteTwoPage(),
-          AppRoutePagePath.TEST_ROUTE_THREAD: TestRouteThreadPage(),
         },
       );
     }
@@ -82,20 +68,5 @@ class AppRoutePagePath {
   ///登录注册
   static final String USER_PWD_LOGIN = "user_pwd_login";
   static final String USER_PWD_REGISTER = "user_pwd_register";
-
-  ///testWidget
-  static final String TEST_OPTION = "test_option";
-
-  ///数据库
-  static final String TEST_DATA_BASE = "test_data_base";
-
-  ///路由
-  static final String TEST_ROUTE = "test_route";
-
-  //路由测试界面
-  static final String TEST_ROUTE_ONE = "test_route_one";
-  static final String TEST_ROUTE_TWO = "test_route_two";
-  static final String TEST_ROUTE_THREAD = "test_route_thread";
-
   static final String CURRENCY_WEB_VIEW = "currency_web_view";
 }
