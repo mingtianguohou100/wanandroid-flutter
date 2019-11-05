@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart';
 import 'package:wanandroid_flutter/global/global_constant.dart';
 import 'package:wanandroid_flutter/model/UserLoginBean.dart';
+import 'dart:convert' as convert;
 
 /// SharedPreferences Util.
 class SpUtil {
@@ -177,26 +178,19 @@ class SpUtil {
     return _prefs != null;
   }
 
-  static UserLoginBean getUserInfo() {
-    UserLoginBean ub;
-    String userLoginBeanJson = getString(GlobalConstant.LOCAL_USER_DATA_SP_KEY);
-    if (userLoginBeanJson != null && userLoginBeanJson != "") {
-      try {
-        ub = UserLoginBean.fromJson(json.decode(userLoginBeanJson));
-      } catch (e) {
-      }
-    }
-    return ub;
-  }
-
-  static void saveUserInfo(String userLoginBeanJson) {
-    SharedPreferences.getInstance().then((prefs) {
-      prefs.setString(GlobalConstant.LOCAL_USER_DATA_SP_KEY, userLoginBeanJson);
-    });
-  }
-
-  static void clearUserInfo() {
-    remove(GlobalConstant.LOCAL_USER_DATA_SP_KEY);
-  }
-
+//  static UserLoginBean getUserInfo() {
+//    UserLoginBean ub;
+//    var userLoginBeanJson = getString(GlobalConstant.LOCAL_USER_DATA_SP_KEY);
+//    if (userLoginBeanJson != null && userLoginBeanJson != "") {
+//      try {
+//        ub = UserLoginBean.fromJson(json.decode(userLoginBeanJson));
+//      } catch (e) {}
+//    }
+//    return ub;
+//  }
+//
+//  static void saveUserInfo(var userLoginBeanJson) => putString(
+//      GlobalConstant.LOCAL_USER_DATA_SP_KEY, json.encode(userLoginBeanJson));
+//
+//  static void clearUserInfo() => remove(GlobalConstant.LOCAL_USER_DATA_SP_KEY);
 }

@@ -11,10 +11,7 @@ Widget buildView(
     UserPwdLoginState state, Dispatch dispatch, ViewService viewService) {
   UserPwdLoginState _userPwdLoginState = state.clone();
 
-  /*
-  * 注册和登录的widget
-  * isLogin:true 登录按钮
-  * **/
+  ///  注册和登录的widget isLogin:true 登录按钮
   Widget createloginAndRestButton(bool isLogin) {
     return Expanded(
       child: Padding(

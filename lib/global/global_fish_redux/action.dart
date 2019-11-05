@@ -15,8 +15,8 @@ class GlobalActionCreator {
     return  Action(GlobalAction.gloablLanguage,payload:language);
   }
 
-  static Action changeUserData(UserLoginBean userData) {
-    return  Action(GlobalAction.globalUserData,payload:userData);
+  static Action changeUserData(String token) {
+    return  Action(GlobalAction.globalUserData,payload:token);
   }
 
 }

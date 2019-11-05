@@ -43,6 +43,7 @@ class S implements WidgetsLocalizations {
   String get inputPassWord => "input paassword";
   String get input_content_count => "Please enter the user name in the correct format!";
   String get input_content_pwd => "Please enter the password in the correct format!";
+  String get isLogin => "is login";
   String get isLoginOut => "Are you sure you want to log out?";
   String get knowledge => "knowledge structure";
   String get knowledge_bottom_men_btn => "knowledge structure";
@@ -142,6 +143,8 @@ class $zh extends S {
   String get layout_example => "布局控件";
   @override
   String get login => "登录";
+  @override
+  String get isLogin => "已登录";
   @override
   String get input_content_pwd => "请输入正确格式的密码!";
   @override

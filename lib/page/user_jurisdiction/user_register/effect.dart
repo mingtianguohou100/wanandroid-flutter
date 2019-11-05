@@ -37,7 +37,7 @@ void _onRegiestCheckRegister(prefix0.Action action, Context<UserRegisterState> c
           "username": ctx.state.textEditingController_count.text,
           "password": ctx.state.textEditingController_password.text,
           "repassword": ctx.state.textEditingController_password.text,
-        }).then((data) {
+        },context: ctx.context).then((data) {
           Navigator.of(ctx.context).pop(S.of(ctx.context).register_ok);
         }, onError: (e) {
           ctx.state.global.currentState

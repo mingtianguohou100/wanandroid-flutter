@@ -53,7 +53,6 @@ requestRefreshData(Context<HomeState> ctx, bool isOneReques) async {
   List<Datas> homeInfomationList;
   await CommonService.instance.refreshHomeList(1,context: ctx.context).then((data) {
     homeInfomationList = HomeInfomationBean.fromJson(data).datas;
-
     CommonService.instance.refreshBanner(context: ctx.context).then((data) {
       homeBannerList = getHomeHeadBannerBeanList(data);
       isOneReques
@@ -71,7 +70,7 @@ requestRefreshData(Context<HomeState> ctx, bool isOneReques) async {
 ///加载更多
 requestMoreData(Context<HomeState> ctx) async {
   int morePage = ctx.state.morePage;
-  CommonService.instance.refreshHomeList(morePage++).then((data) {
+  CommonService.instance.refreshHomeList(morePage++,context: ctx.context).then((data) {
     List<Datas> homeItems = HomeInfomationBean.fromJson(data).datas;
     ctx.dispatch(HomeActionCreator.moreData(homeItems));
   }, onError: (e) {});

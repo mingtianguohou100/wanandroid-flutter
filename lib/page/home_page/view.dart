@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:nima/nima_actor.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/global_constant.dart';
 import 'package:wanandroid_flutter/global/global_theme_style.dart';
 import 'action.dart';
 import 'state.dart';
@@ -50,7 +49,9 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
           ? FloatingActionButton(
               onPressed: () => dispatch(HomeActionCreator.goTop()),
               child: Icon(Icons.keyboard_arrow_up),
-              backgroundColor: GlobalThemeStyle.themeList[_homeState.themeColor],
+              backgroundColor: _homeState.themeColor != null
+                  ? GlobalThemeStyle.themeList[_homeState.themeColor]
+                  : GlobalThemeStyle.themeList[0],
             )
           : null,
       body: Stack(
@@ -78,13 +79,13 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               child: NimaActor(
                 "resources/animations/Big Green Guy.nima",
                 alignment: Alignment.center,
-                fit: BoxFit.contain,
+                fit: BoxFit.scaleDown,
                 controller: _homeState.bigGreenGuyController,
                 animation: _homeState.bggAnimationString,
               ),
-              margin: EdgeInsets.only(bottom: 100,right: 10),
+              margin: EdgeInsets.only(bottom: 100, right: 10),
               width: 200.0,
-              height: 170.0,
+              height: 200.0,
             ),
           ),
         ],

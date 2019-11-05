@@ -8,7 +8,7 @@ class AppState implements GlobalBaseState<AppState> {
   int themeColor;
 
   @override
-  UserLoginBean userLoginBean;
+  String token;
 
   @override
   Locale locale;
@@ -18,7 +18,7 @@ class AppState implements GlobalBaseState<AppState> {
     return AppState()
       ..themeColor = themeColor
       ..locale = locale
-      ..userLoginBean = userLoginBean;
+      ..token = token;
   }
 }
 

@@ -11,7 +11,7 @@ class SideslipState implements Cloneable<SideslipState> {
 
   int themeColor;
 
-  UserLoginBean userLoginBean;
+  String token;
 
   Color lpwColor;
   String lpwString;
@@ -29,7 +29,7 @@ class SideslipState implements Cloneable<SideslipState> {
       ..lowPolyWolfController = lowPolyWolfController
       ..lpwAnimaIsCom = lpwAnimaIsCom
       ..themeColor = themeColor
-      ..userLoginBean = userLoginBean;
+      ..token = token;
   }
 }
 

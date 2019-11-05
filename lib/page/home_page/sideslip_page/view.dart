@@ -2,11 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/global_constant.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/action.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/store.dart';
 import 'package:wanandroid_flutter/global/global_theme_style.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'package:wanandroid_flutter/widget/my_web_page.dart';
 import 'action.dart';
 import 'state.dart';
@@ -14,7 +10,7 @@ import 'state.dart';
 Widget buildView(
     SideslipState state, Dispatch dispatch, ViewService viewService) {
   SideslipState _sideslipState = state.clone();
-  UserLoginBean _userLocation = _sideslipState.userLoginBean;
+  String _token = _sideslipState.token;
   BuildContext _context = viewService.context;
   S _i18nS = S.of(_context);
   /*
@@ -23,20 +19,19 @@ Widget buildView(
   Widget createDrawerHead() {
     return UserAccountsDrawerHeader(
       accountName: FlatButton(
-          onPressed: () => _userLocation == null
-              ? dispatch(SideslipActionCreator.onLogin())
-              : null,
+          onPressed: () =>
+              _token == null ? dispatch(SideslipActionCreator.onLogin()) : null,
           child: Text(
-            _userLocation == null
+            _token == null
                 ? S.of(_context).click_login
-                : _userLocation.username,
+                : S.of(_context).isLogin,
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 17.0,
                 fontWeight: FontWeight.bold),
           )),
       currentAccountPicture: CircleAvatar(
-        backgroundImage: _userLocation == null
+        backgroundImage: _token == null
             ? AssetImage("resources/images/my_flutter_logo_false.png")
             : AssetImage("resources/images/my_flutter_logo_true.png"),
       ),
@@ -47,6 +42,7 @@ Widget buildView(
     return GestureDetector(
       onTap: () => dispatch(SideslipActionCreator.changeThemeColor(position)),
       child: Container(
+        width: 500,
         margin: const EdgeInsets.all(10.0),
         color: GlobalThemeStyle.themeList[position],
         child: Padding(
@@ -86,16 +82,30 @@ Widget buildView(
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return SimpleDialog(
-            children: items,
+          return AlertDialog(
+            content: Container(
+              height: 300,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: items,
+                ),
+              ),
+            ),
           );
         });
   }
 
-  Widget createLagItem(String text, var gtc) {
+  Widget createLagItem(String text) {
     return ListTile(
       onTap: () {
-        dispatch(gtc);
+        switch (text) {
+          case "中文":
+            return dispatch(
+                SideslipActionCreator.changeLanguage(GlobalThemeStyle.CHINESE));
+          case "English":
+            return dispatch(
+                SideslipActionCreator.changeLanguage(GlobalThemeStyle.ENGLISH));
+        }
       },
       title: Text(text),
     );
@@ -110,10 +120,8 @@ Widget buildView(
         builder: (BuildContext context) {
           return SimpleDialog(
             children: <Widget>[
-              createLagItem("中文",
-                  SideslipActionCreator.changeLanguage(GlobalThemeStyle.CHINESE)),
-              createLagItem("English",
-                  SideslipActionCreator.changeLanguage(GlobalThemeStyle.ENGLISH)),
+              createLagItem("中文"),
+              createLagItem("English"),
             ],
           );
         });
@@ -237,21 +245,23 @@ Widget buildView(
 
   Widget _buildLowPolyWolf() {
     return Container(
-      margin:EdgeInsets.only(top: 50.0),
+      margin: EdgeInsets.only(top: 50.0),
       child: GestureDetector(
-      onTap: () => dispatch(SideslipActionCreator.lowPolyWolfClick()),
-      child: SizedBox(
-        width: 200.0,
-        height: 200.0,
-        child: FlareActor("resources/animations/low_poly_wolf.flr",
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
-            color: _sideslipState.lpwColor,
+        onTap: () => dispatch(SideslipActionCreator.lowPolyWolfClick()),
+        child: SizedBox(
+          width: 200.0,
+          height: 200.0,
+          child: FlareActor("resources/animations/low_poly_wolf.flr",
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+              color: _sideslipState.lpwColor,
 //            controller: _sideslipState.lowPolyWolfController,
-            callback: (name)=>dispatch(SideslipActionCreator.closeLowPolyWolf()),
-            animation: _sideslipState.lpwString),
+              callback: (name) =>
+                  dispatch(SideslipActionCreator.closeLowPolyWolf()),
+              animation: _sideslipState.lpwString),
+        ),
       ),
-    ),);
+    );
   }
 
   return Drawer(
@@ -261,26 +271,6 @@ Widget buildView(
       child: Column(
         children: <Widget>[
           createDrawerHead(),
-//        createDrawerTile(
-//            WanAndroidLocalizations.of(context).my_likes, Icons.favorite, () {
-//          SpUtils.getUserInfo((name, cookie) {
-//            if (name == null) {
-//              Navigator.of(context)
-//                  .push(MaterialPageRoute(builder: (BuildContext context) {
-//                return LoginPage();
-//              }));
-//            } else {
-//              Navigator.of(context)
-//                  .push(MaterialPageRoute(builder: (BuildContext context) {
-//                return LikesPage();
-//              }));
-//            }
-//          }, (e) {});
-//        }),
-//          createDrawerTile(_i18nS.often_ui_widget, Icons.star, () {
-//            dispatch(SideslipActionCreator.onJumpTestOption());
-//          }),
-
           createDrawerTile(_i18nS.switch_theme, Icons.signal_wifi_4_bar, () {
             switchTheme(viewService.context);
           }),
@@ -291,10 +281,9 @@ Widget buildView(
             createAbout(viewService.context);
           }),
           _buildLowPolyWolf(),
-
           Container(
             child: Offstage(
-              offstage: _userLocation == null ? true : false,
+              offstage: _token == null ? true : false,
               child: RaisedButton(
                 onPressed: () => showLogOutDialog(),
                 color: Colors.red,

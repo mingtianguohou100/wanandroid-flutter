@@ -39,14 +39,14 @@ Page<T, dynamic> pageConfiguration<T extends GlobalBaseState<T>>(
       GlobalBaseState p = pagestate;
       if ((p.themeColor == appState.themeColor) &&
           (p.locale == appState.locale) &&
-          (p.userLoginBean == appState.userLoginBean)) {
+          (p.token == appState.token)) {
         return pagestate;
       } else {
         if (pagestate is Cloneable) {
           final Object copy = pagestate.clone();
           final GlobalBaseState newState = copy;
           newState.themeColor = appState.themeColor;
-          newState.userLoginBean = appState.userLoginBean;
+          newState.token = appState.token;
           newState.locale = appState.locale;
           return newState;
         }

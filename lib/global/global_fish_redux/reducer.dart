@@ -1,5 +1,4 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'package:wanandroid_flutter/utils/sp_util.dart';
 import '../global_constant.dart';
 import 'action.dart';
@@ -25,13 +24,12 @@ GlobalState _changeThemeColor(GlobalState state, prefix0.Action action) {
 
 GlobalState _changeLanguage(GlobalState state, prefix0.Action action) {
   String _language = action.payload;
-  ///本地化选择的语言
   SpUtil.putString(GlobalConstant.LOCAL_INTERNATIONALIZATION_SP_KEY, _language);
   return state.clone()..locale = Locale(_language, "");
 }
 
 GlobalState _changeUserData(GlobalState state, prefix0.Action action) {
-  UserLoginBean userData = action.payload;
-  SpUtil.saveUserInfo(userData.toJson().toString());
-  return state.clone()..userLoginBean = userData;
+  String _token = action.payload;
+  SpUtil.putString(GlobalConstant.LOCAL_USER_DATA_SP_KEY, _token);
+  return state.clone()..token = _token;
 }

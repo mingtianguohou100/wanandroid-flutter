@@ -51,11 +51,9 @@ void _onLogin(prefix0.Action action, Context<UserPwdLoginState> ctx) {
     CommonService.instance.getLogin({
       "username": ctx.state.textEditingController_count.text,
       "password": ctx.state.textEditingController_password.text,
-    }).then((data) {
+    },context: ctx.context).then((data) {
       ctx.dispatch(UserPwdLoginActionCreator.updAnimation("success"));
       CommonUilt.shoToast("登录成功");
-      GlobalStore.store.dispatch(
-          GlobalActionCreator.changeUserData(UserLoginBean.fromJson(data)));
     }, onError: (e) {
       ctx.dispatch(UserPwdLoginActionCreator.updAnimation("fail"));
     });

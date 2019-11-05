@@ -8,7 +8,7 @@ enum SideslipAction {
   onChangeLanguage,
   onChangeThemeColor,
   lowPolyWolfClick,
-  closeLowPolyWolf
+  closeLowPolyWolf,
 }
 
 class SideslipActionCreator {

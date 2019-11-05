@@ -6,6 +6,6 @@ enum HomeHeadAction { onClickBanner }
 
 class HomeHeadActionCreator {
   static Action onClickBanner(HomeHeadBannerBean hhb) {
-    return Action(HomeHeadAction.onClickBanner);
+    return Action(HomeHeadAction.onClickBanner,payload: hhb);
   }
 }

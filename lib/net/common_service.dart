@@ -20,23 +20,24 @@ class CommonService {
   CommonService._internal();
 
   ///退出登录
-  logOut() => HttpManager.instance.requestNetWork(Api.LOGIN_OUT);
+  logOut({BuildContext context}) => HttpManager.instance.requestNetWork(Api.LOGIN_OUT,context: context);
 
   ///首页banner
   refreshBanner({BuildContext context}) =>
-      HttpManager.instance.requestNetWork(Api.HOME_BANNER);
+      HttpManager.instance.requestNetWork(Api.HOME_BANNER,context: context);
 
   ///首页文章列表
   refreshHomeList(int page, {BuildContext context}) =>
       HttpManager.instance.requestNetWork(
-          "article/list/" + (page == null ? 1 : page).toString() + "/json");
+          "article/list/" + (page == null ? 1 : page).toString() + "/json",context: context);
 
   ///登录
-  getLogin(dynamic params) => HttpManager.instance.requestNetWork(Api.LOGIN_URL,
-      queryParameters: params, method: Api.POST_TYPE);
+  getLogin(dynamic params,{BuildContext context}) => HttpManager.instance.requestNetWork(Api.LOGIN_URL,
+      queryParameters: params, method: Api.POST_TYPE,context: context);
 
   ///注册
-  getRegister(dynamic params) =>
+  getRegister(dynamic params,{BuildContext context}) =>
       HttpManager.instance.requestNetWork(Api.REGISTER_URL,
-          queryParameters: params, method: Api.POST_TYPE);
+          queryParameters: params, method: Api.POST_TYPE,context: context);
+
 }

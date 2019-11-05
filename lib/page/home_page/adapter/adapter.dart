@@ -43,10 +43,10 @@ class _HomeItemAdapterConnector extends ConnOp<HomeState, List<ItemBean>> {
           .toList()
       : <ItemBean>[];
 
-//  @override
-//  set(HomeState state, List<ItemBean> items){
-//    state.homeItems = List<Datas>.from(
-//    items.map<String>((ItemBean bean) => bean.data).toList());
-//  }
+  @override
+  set(HomeState state, List<ItemBean> items){
+    state.homeItems = List<Datas>.from(
+    items.map<String>((ItemBean bean) => bean.data).toList());
+  }
 
 }

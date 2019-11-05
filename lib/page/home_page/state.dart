@@ -25,7 +25,7 @@ class HomeState implements GlobalBaseState<HomeState> {
   int themeColor;
 
   @override
-  UserLoginBean userLoginBean;
+  String token;
 
   ///绿巨人
   BigGreenGuyController bigGreenGuyController;
@@ -65,7 +65,7 @@ class HomeState implements GlobalBaseState<HomeState> {
       ..isShowTopWiget = isShowTopWiget
       ..scrollController = scrollController
       ..themeColor = themeColor
-      ..userLoginBean = userLoginBean
+      ..token = token
       ..lowPolyWolfController = lowPolyWolfController
       ..homeBanners = homeBanners;
   }
@@ -83,11 +83,11 @@ class SideslipConnector extends ConnOp<HomeState, SideslipState> {
     ..colorIndex = homeState.colorIndex
     ..lowPolyWolfController = homeState.lowPolyWolfController
     ..lpwAnimaIsCom = homeState.lpwAnimaIsCom
-    ..userLoginBean = homeState.userLoginBean
+    ..token = homeState.token
     ..themeColor = homeState.themeColor;
 
   set(HomeState homeState, SideslipState sideslipState) {
-    sideslipState.userLoginBean = homeState.userLoginBean;
+    sideslipState.token = homeState.token;
     sideslipState.themeColor = homeState.themeColor;
     homeState.lpwColor = sideslipState.lpwColor;
     homeState.lpwString = sideslipState.lpwString;

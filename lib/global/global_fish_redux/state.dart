@@ -2,14 +2,13 @@ import 'dart:ui';
 
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 
 abstract class GlobalBaseState<T extends Cloneable<T>> implements Cloneable<T> {
   int get themeColor;
 
-  UserLoginBean get userLoginBean;
+  String get token;
 
-  set userLoginBean(UserLoginBean userLoginBean);
+  set token(String token);
 
   Locale get locale;
 
@@ -26,13 +25,13 @@ class GlobalState implements GlobalBaseState<GlobalState> {
   Locale locale;
 
   @override
-  UserLoginBean userLoginBean;
+  String  token;
 
   @override
   GlobalState clone() {
     return GlobalState()
       ..themeColor = themeColor
       ..locale = locale
-      ..userLoginBean = userLoginBean;
+      ..token = token;
   }
 }

@@ -45,6 +45,8 @@ Widget buildView(Datas state, Dispatch dispatch, ViewService viewService) {
               alignment: Alignment.topLeft,
               child: Text(
                 _item.title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -66,7 +68,7 @@ Widget buildView(Datas state, Dispatch dispatch, ViewService viewService) {
                   ),
                   IconButton(
                     icon: Image.asset("resources/images/aixing.png",
-                        color: Colors.red),
+                        color:Colors.red ),
                   ),
                 ],
               ),

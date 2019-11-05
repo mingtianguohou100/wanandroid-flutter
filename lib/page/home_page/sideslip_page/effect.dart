@@ -40,12 +40,11 @@ void _onLogin(prefix0.Action action, Context<SideslipState> ctx) =>
         .pushNamed(AppRoutePagePath.USER_PWD_LOGIN, arguments: action.payload);
 
 void _onLoginOut(prefix0.Action action, Context<SideslipState> ctx) =>
-    requestLogOut();
-
+    requestLogOut(ctx);
 
 //退出登录
-void requestLogOut() async {
-  CommonService.instance.logOut().then((data) {
+void requestLogOut(Context<SideslipState> ctx) async {
+  CommonService.instance.logOut(context: ctx.context).then((data) {
     GlobalStore.store.dispatch(GlobalActionCreator.changeUserData(null));
   }, onError: (e) {});
 }
