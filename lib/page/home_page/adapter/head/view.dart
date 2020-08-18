@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/model/HomeHeadBannerBean.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:wandroid_flutter/model/HomeHeadBannerBean.dart';
 import 'action.dart';
 import 'state.dart';
 import 'package:cached_network_image/cached_network_image.dart';

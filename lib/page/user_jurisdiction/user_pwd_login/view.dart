@@ -1,9 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/widget/user_account_text_field_widget.dart';
-
+import 'package:wandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/widget/user_account_text_field_widget.dart';
 import 'action.dart';
 import 'state.dart';
 

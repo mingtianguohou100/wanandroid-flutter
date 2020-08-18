@@ -1,13 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/app_route.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/action.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/store.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
-import 'package:wanandroid_flutter/net/common_service.dart';
-import 'package:wanandroid_flutter/utils/common_util.dart';
+import 'package:wandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/global/app_route.dart';
+import 'package:wandroid_flutter/net/common_service.dart';
+import 'package:wandroid_flutter/utils/common_util.dart';
 import 'action.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;
 

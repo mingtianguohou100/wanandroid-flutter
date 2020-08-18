@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/utils/sp_util.dart';
+import 'package:wandroid_flutter/utils/sp_util.dart';
 import '../global_constant.dart';
 import 'action.dart';
 import 'state.dart';

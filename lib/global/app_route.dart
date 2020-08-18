@@ -1,10 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/page/app_page/page.dart';
-import 'package:wanandroid_flutter/page/currency_webpage/page.dart';
-import 'package:wanandroid_flutter/page/home_page/page.dart';
-import 'package:wanandroid_flutter/page/start_page/page.dart';
-import 'package:wanandroid_flutter/page/user_jurisdiction/user_pwd_login/page.dart';
-import 'package:wanandroid_flutter/page/user_jurisdiction/user_register/page.dart';
+import 'package:wandroid_flutter/page/app_page/page.dart';
+import 'package:wandroid_flutter/page/currency_webpage/page.dart';
+import 'package:wandroid_flutter/page/home_page/page.dart';
+import 'package:wandroid_flutter/page/start_page/page.dart';
+import 'package:wandroid_flutter/page/user_jurisdiction/user_pwd_login/page.dart';
+import 'package:wandroid_flutter/page/user_jurisdiction/user_register/page.dart';
+
 import 'global_fish_redux/state.dart';
 import 'global_fish_redux/store.dart';
 

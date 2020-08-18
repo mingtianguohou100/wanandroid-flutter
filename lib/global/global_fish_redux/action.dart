@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 
 enum GlobalAction {globalThemeColor, gloablLanguage ,globalUserData}
 

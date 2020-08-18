@@ -1,13 +1,14 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/action.dart';
-import 'package:wanandroid_flutter/global/global_fish_redux/store.dart';
-import 'package:wanandroid_flutter/net/api.dart';
-import 'package:wanandroid_flutter/utils/common_util.dart';
 import 'package:http/http.dart' as http;
+import 'package:wandroid_flutter/global/global_fish_redux/action.dart';
+import 'package:wandroid_flutter/global/global_fish_redux/store.dart';
+import 'package:wandroid_flutter/utils/common_util.dart';
 import '../generated/i18n.dart';
 import 'dart:convert' as convert;
+
+import 'api.dart';
 
 class HttpManager {
   static HttpManager _instance;

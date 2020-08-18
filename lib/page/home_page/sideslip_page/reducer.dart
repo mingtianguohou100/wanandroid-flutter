@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;
-import 'package:wanandroid_flutter/global/global_theme_style.dart';
+import 'package:wandroid_flutter/global/global_theme_style.dart';
 
 import 'action.dart';
 import 'state.dart';

@@ -3,8 +3,6 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart';
-import 'package:wanandroid_flutter/global/global_constant.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
 import 'dart:convert' as convert;
 
 /// SharedPreferences Util.

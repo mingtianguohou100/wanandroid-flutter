@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:wanandroid_flutter/global/app_route.dart';
-import 'package:wanandroid_flutter/model/HomeHeadBannerBean.dart';
+import 'package:wandroid_flutter/global/app_route.dart';
+import 'package:wandroid_flutter/model/HomeHeadBannerBean.dart';
+
 import 'action.dart';
 import 'state.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;

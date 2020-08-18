@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/page/home_page/sideslip_page/component.dart';
+import 'package:wandroid_flutter/page/home_page/sideslip_page/component.dart';
 
 import 'adapter/adapter.dart';
 import 'effect.dart';

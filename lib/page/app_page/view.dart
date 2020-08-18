@@ -1,9 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/app_route.dart';
-import 'package:wanandroid_flutter/global/global_theme_style.dart';
+import 'package:wandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/global/app_route.dart';
+import 'package:wandroid_flutter/global/global_theme_style.dart';
+
 import 'state.dart';
 
 Widget buildView(AppState state, Dispatch dispatch, ViewService viewService) {

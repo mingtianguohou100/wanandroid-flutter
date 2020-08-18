@@ -1,16 +1,24 @@
-name: wanandroid_flutter
+name: wandroid_flutter
 description: A new Flutter application.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
-# Read more about versioning at semver.org.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -33,7 +41,7 @@ dependencies:
   flutter_screenutil: ^0.6.0
 
   #框架：https://pub.dev/packages/fish_redux#-installing-tab-
-  fish_redux: ^0.2.4
+  fish_redux: ^0.3.4
 
   #国际化：https://pub.dev/packages/flutter_i18n#-installing-tab-
   flutter_i18n: ^0.6.3
@@ -42,7 +50,7 @@ dependencies:
   json_serializable: ^3.2.3
 
   #网络图片:https://pub.dev/packages/cached_network_image#-installing-tab-
-  cached_network_image: ^0.8.0
+  cached_network_image: ^2.2.0+1
 
   #网络请求动画:https://pub.dev/packages/flutter_spinkit
   flutter_spinkit: "^3.1.0"
@@ -79,10 +87,8 @@ dev_dependencies:
   build_runner: ^1.1.1
   json_serializable: ^3.2.3
 
-
-
 # For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
@@ -94,33 +100,33 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
   assets:
-     - resources/images/sh_img.jpg
-     - resources/images/my_flutter_logo_false.png
-     - resources/images/my_flutter_logo_true.png
-     - resources/images/huo_false.png
-     - resources/images/huo_true.png
-     - resources/images/android.png
-     - resources/images/aixing.png
-     - resources/images/defult_bac_img.png
-     - resources/images/flutter_logo.png
-     - resources/images/no_select_cir.png
-     - resources/images/select_cir.png
-     - resources/video/start_page_video.mp4
-     - resources/video/guide_one.mp4
-     - resources/video/guide_two.mp4
-     - resources/video/guide_thread.mp4
-     - resources/animations/Big Green Guy.nima
-     - resources/animations/Big Green Guy.png
-     - resources/animations/low_poly_wolf.flr
-     - resources/animations/Teddy.flr
+    - resources/images/sh_img.jpg
+    - resources/images/my_flutter_logo_false.png
+    - resources/images/my_flutter_logo_true.png
+    - resources/images/huo_false.png
+    - resources/images/huo_true.png
+    - resources/images/android.png
+    - resources/images/aixing.png
+    - resources/images/defult_bac_img.png
+    - resources/images/flutter_logo.png
+    - resources/images/no_select_cir.png
+    - resources/images/select_cir.png
+    - resources/video/start_page_video.mp4
+    - resources/video/guide_one.mp4
+    - resources/video/guide_two.mp4
+    - resources/video/guide_thread.mp4
+    - resources/animations/Big Green Guy.nima
+    - resources/animations/Big Green Guy.png
+    - resources/animations/low_poly_wolf.flr
+    - resources/animations/Teddy.flr
   # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.io/assets-and-images/#resolution-aware.
+  # https://flutter.dev/assets-and-images/#resolution-aware.
 
   # For details regarding adding assets from package dependencies, see
-  # https://flutter.io/assets-and-images/#from-packages
+  # https://flutter.dev/assets-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
@@ -140,4 +146,4 @@ flutter:
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,
-  # see https://flutter.io/custom-fonts/#from-packages
+  # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
+import 'package:wandroid_flutter/model/HomeInfomationBean.dart';
 import 'action.dart';
 
 Widget buildView(Datas state, Dispatch dispatch, ViewService viewService) {

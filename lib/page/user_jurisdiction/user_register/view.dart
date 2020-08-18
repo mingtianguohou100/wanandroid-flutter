@@ -1,12 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/model/UserLoginBean.dart';
-import 'package:wanandroid_flutter/net/common_service.dart';
-import 'package:wanandroid_flutter/utils/common_util.dart';
-import 'package:wanandroid_flutter/widget/user_account_text_field_widget.dart';
-
+import 'package:wandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/widget/user_account_text_field_widget.dart';
 import 'action.dart';
 import 'state.dart';
 

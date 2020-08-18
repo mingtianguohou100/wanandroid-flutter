@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:nima/nima_actor.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/global_theme_style.dart';
+import 'package:wandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/global/global_theme_style.dart';
 import 'action.dart';
 import 'state.dart';
 

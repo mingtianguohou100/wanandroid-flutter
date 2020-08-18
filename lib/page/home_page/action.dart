@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/model/HomeHeadBannerBean.dart';
-import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
+import 'package:wandroid_flutter/model/HomeHeadBannerBean.dart';
+import 'package:wandroid_flutter/model/HomeInfomationBean.dart';
 
 //TODO replace with your own action
 enum HomeAction {

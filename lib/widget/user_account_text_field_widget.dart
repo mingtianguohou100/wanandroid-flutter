@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/generated/i18n.dart';
 
 ///登陆注册时的通用TextFormField
 class UserAccountTextFieldWidget extends StatefulWidget {

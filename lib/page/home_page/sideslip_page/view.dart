@@ -1,9 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:wanandroid_flutter/generated/i18n.dart';
-import 'package:wanandroid_flutter/global/global_theme_style.dart';
-import 'package:wanandroid_flutter/widget/my_web_page.dart';
+import 'package:wandroid_flutter/generated/i18n.dart';
+import 'package:wandroid_flutter/global/global_theme_style.dart';
+import 'package:wandroid_flutter/widget/my_web_page.dart';
 import 'action.dart';
 import 'state.dart';
 

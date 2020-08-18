@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
+import 'package:wandroid_flutter/model/HomeInfomationBean.dart';
 import '../state.dart';
 import 'head/component.dart';
 import 'head/state.dart';

@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:wanandroid_flutter/model/HomeHeadBannerBean.dart';
-import 'package:wanandroid_flutter/model/HomeInfomationBean.dart';
-import 'package:wanandroid_flutter/net/common_service.dart';
-import 'package:wanandroid_flutter/widget/big_green_guy_controller.dart';
+import 'package:wandroid_flutter/model/HomeHeadBannerBean.dart';
+import 'package:wandroid_flutter/model/HomeInfomationBean.dart';
+import 'package:wandroid_flutter/net/common_service.dart';
+import 'package:wandroid_flutter/widget/big_green_guy_controller.dart';
 import 'action.dart';
 import 'state.dart';
 

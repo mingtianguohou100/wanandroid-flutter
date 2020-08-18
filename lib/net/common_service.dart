@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wanandroid_flutter/net/api.dart';
-import 'package:wanandroid_flutter/net/http_manager.dart';
+
+import 'api.dart';
+import 'http_manager.dart';
 
 ///接口类
 class CommonService {
