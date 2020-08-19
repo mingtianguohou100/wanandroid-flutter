@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wandroid_flutter/global/global_fish_redux/state.dart';
+import 'package:wandroid_flutter/app/global_fish_redux/state.dart';
 
 class AppState implements GlobalBaseState<AppState> {
   @override

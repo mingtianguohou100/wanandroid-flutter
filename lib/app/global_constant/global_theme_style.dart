@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 class GlobalThemeStyle {
   //国际化
@@ -38,7 +38,7 @@ class GlobalThemeStyle {
   }
 
   static double fontFromPx(double px) {
-    return ScreenUtil().setSp(px);
+    return ScreenUtil().setWidth(px);
   }
 
   static double widthFromPx(double px) {

@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:wandroid_flutter/global/app_route.dart';
+import 'package:wandroid_flutter/app/app_route.dart';
 import 'state.dart';
 
 Effect<MainState> buildEffect() {

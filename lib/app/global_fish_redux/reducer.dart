@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wandroid_flutter/app/global_constant/global_constant.dart';
 import 'package:wandroid_flutter/utils/sp_util.dart';
-import '../global_constant.dart';
 import 'action.dart';
 import 'state.dart';
 import 'package:flutter/material.dart';

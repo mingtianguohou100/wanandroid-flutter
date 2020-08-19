@@ -1,10 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wandroid_flutter/app/app_route.dart';
+import 'package:wandroid_flutter/app/network/common_service.dart';
 import 'package:wandroid_flutter/generated/i18n.dart';
-import 'package:wandroid_flutter/global/app_route.dart';
-import 'package:wandroid_flutter/net/common_service.dart';
 import 'package:wandroid_flutter/utils/common_util.dart';
+import 'package:wandroid_flutter/utils/toast_util.dart';
 import 'action.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;
 
@@ -50,14 +51,14 @@ void _onLogin(prefix0.Action action, Context<UserPwdLoginState> ctx) {
       "password": ctx.state.textEditingController_password.text,
     },context: ctx.context).then((data) {
       ctx.dispatch(UserPwdLoginActionCreator.updAnimation("success"));
-      CommonUilt.shoToast("登录成功");
+      ToastUtil.shoToast("登录成功");
     }, onError: (e) {
       ctx.dispatch(UserPwdLoginActionCreator.updAnimation("fail"));
     });
   } else {
     ctx.dispatch(UserPwdLoginActionCreator.updAnimation("fail"));
     ctx.state.global.currentState.showSnackBar(
-        CommonUilt.showSnackBar(Text(S.of(ctx.context).checkinput)));
+        ToastUtil.showSnackBar(Text(S.of(ctx.context).checkinput)));
   }
 }
 
@@ -67,7 +68,7 @@ void _onRegister(prefix0.Action action, Context<UserPwdLoginState> ctx) {
       .then((data) {
     data != null
         ? ctx.state.global.currentState.showSnackBar(
-            CommonUilt.showSnackBar(Text(S.of(ctx.context).register_ok)))
+        ToastUtil.showSnackBar(Text(S.of(ctx.context).register_ok)))
         : null;
   });
 }

@@ -31,23 +31,20 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-  #网络:https://github.com/flutterchina/dio/blob/flutter/README-ZH.md
-  dio: ^2.1.0
-
-  #网络状态监听:https://pub.dev/packages/connectivity#-installing-tab-
-  connectivity: ^0.4.5+2
-
-  #适配:https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md
-  flutter_screenutil: ^0.6.0
-
   #框架：https://pub.dev/packages/fish_redux#-installing-tab-
   fish_redux: ^0.3.4
 
+  #网络:https://github.com/flutterchina/dio/blob/flutter/README-ZH.md
+  dio: ^3.0.10
+
+  #网络状态监听:https://pub.dev/packages/connectivity#-installing-tab-
+  connectivity: ^0.4.9
+
   #国际化：https://pub.dev/packages/flutter_i18n#-installing-tab-
-  flutter_i18n: ^0.6.3
+  flutter_i18n: ^0.19.1
 
   #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-
-  json_serializable: ^3.2.3
+  json_serializable: ^3.4.0
 
   #网络图片:https://pub.dev/packages/cached_network_image#-installing-tab-
   cached_network_image: ^2.2.0+1
@@ -64,9 +61,6 @@ dependencies:
   #webview:https://pub.dartlang.org/packages/flutter_webview_plugin#-installing-tab-
   flutter_webview_plugin: ^0.3.0+2
 
-  #toast:https://github.com/PonnamKarthik/FlutterToast
-  fluttertoast: ^3.1.0
-
   #banner:https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md
   flutter_swiper: ^1.1.6
 
@@ -74,18 +68,22 @@ dependencies:
   sqflite: ^1.1.0
 
   #sp:https://pub.dev/packages/shared_preferences#-installing-tab-
-  shared_preferences: ^0.4.3
+  shared_preferences: ^0.5.8
 
   #工具类:https://pub.dev/packages/common_utils#-installing-tab-
-  common_utils: ^1.1.1
+  common_utils: ^1.2.1
+
+  #toast:https://github.com/PonnamKarthik/FlutterToast
+  fluttertoast: ^7.0.2
+
+  #适配:https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md
+  flutter_screenutil: ^2.3.0
 
   nima: ^1.0.0
   flare_flutter: ^1.4.0
 
 dev_dependencies:
-  #序列化:https://pub.dartlang.org/packages/json_serializable#-readme-tab-
-  build_runner: ^1.1.1
-  json_serializable: ^3.2.3
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,11 +1,9 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/material.dart';
-import 'package:wandroid_flutter/global/app_route.dart';
-import 'package:wandroid_flutter/global/global_constant.dart';
-import 'package:wandroid_flutter/global/global_fish_redux/action.dart';
-import 'package:wandroid_flutter/global/global_fish_redux/store.dart';
-import 'package:wandroid_flutter/global/global_theme_style.dart';
+import 'package:wandroid_flutter/app/global_constant/global_constant.dart';
+import 'package:wandroid_flutter/app/global_constant/global_theme_style.dart';
+import 'package:wandroid_flutter/app/global_fish_redux/action.dart';
+import 'package:wandroid_flutter/app/global_fish_redux/store.dart';
 import 'package:wandroid_flutter/utils/sp_util.dart';
 import 'action.dart';
 import 'state.dart';

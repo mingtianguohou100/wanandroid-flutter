@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:wandroid_flutter/global/global_fish_redux/state.dart';
+import 'package:wandroid_flutter/app/global_fish_redux/state.dart';
 import 'package:wandroid_flutter/model/HomeHeadBannerBean.dart';
 import 'package:wandroid_flutter/model/HomeInfomationBean.dart';
 import 'package:wandroid_flutter/page/home_page/sideslip_page/state.dart';

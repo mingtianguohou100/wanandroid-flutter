@@ -1,8 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:wandroid_flutter/app/network/common_service.dart';
 import 'package:wandroid_flutter/generated/i18n.dart';
-import 'package:wandroid_flutter/net/common_service.dart';
 import 'package:wandroid_flutter/utils/common_util.dart';
+import 'package:wandroid_flutter/utils/toast_util.dart';
 import 'action.dart';
 import 'package:fish_redux/fish_redux.dart' as prefix0;
 import 'state.dart';
@@ -38,8 +39,8 @@ void _onRegiestCheckRegister(prefix0.Action action, Context<UserRegisterState> c
           Navigator.of(ctx.context).pop(S.of(ctx.context).register_ok);
         }, onError: (e) {
           ctx.state.global.currentState
-              .showSnackBar(CommonUilt.showSnackBar(Text(e)));
+              .showSnackBar(ToastUtil.showSnackBar(Text(e)));
         })
       : ctx.state.global.currentState.showSnackBar(
-          CommonUilt.showSnackBar(Text(S.of(ctx.context).checkinput)));
+      ToastUtil.showSnackBar(Text(S.of(ctx.context).checkinput)));
 }
