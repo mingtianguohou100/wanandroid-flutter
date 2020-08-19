@@ -18,7 +18,7 @@ Effect<StartState> buildEffect() {
 
 void _onHome(prefix0.Action action, Context<StartState> ctx) {
   Navigator.of(ctx.context).pop();
-  Navigator.of(ctx.context).pushNamed(AppRoutePagePath.HOME_PAGE);
+  Navigator.of(ctx.context).pushNamed(AppRoutePagePath.MAIN_PAGE);
 }
 
 void _onInitState(prefix0.Action action, Context<StartState> ctx) {

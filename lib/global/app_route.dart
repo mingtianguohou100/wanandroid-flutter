@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:wandroid_flutter/page/app_page/page.dart';
 import 'package:wandroid_flutter/page/currency_webpage/page.dart';
 import 'package:wandroid_flutter/page/home_page/page.dart';
+import 'package:wandroid_flutter/page/main_page/page.dart';
 import 'package:wandroid_flutter/page/start_page/page.dart';
 import 'package:wandroid_flutter/page/user_jurisdiction/user_pwd_login/page.dart';
 import 'package:wandroid_flutter/page/user_jurisdiction/user_register/page.dart';
@@ -18,6 +19,7 @@ class AppRoute {
       _pageRoutes = _pageRoutes = PageRoutes(
         pages: <String, Page<Object, dynamic>>{
           AppRoutePagePath.APP: AppPage(),
+          AppRoutePagePath.MAIN_PAGE:MainPage(),
           AppRoutePagePath.APP_START_PAGE: StartPage(),
           AppRoutePagePath.HOME_PAGE: HomePage(),
           AppRoutePagePath.USER_PWD_LOGIN: UserPwdLoginPage(),
@@ -129,9 +131,9 @@ class AppRoute {
 
 class AppRoutePagePath {
   static final String APP = "app";
+  static final String MAIN_PAGE = "main_page";
   static final String APP_START_PAGE = "start_page";
   static final String HOME_PAGE = "home_page";
-
   ///登录注册
   static final String USER_PWD_LOGIN = "user_pwd_login";
   static final String USER_PWD_REGISTER = "user_pwd_register";
